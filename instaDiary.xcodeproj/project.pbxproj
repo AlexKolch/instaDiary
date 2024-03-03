@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		FC6822902B94979D00562C78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68228F2B94979D00562C78 /* AppDelegate.swift */; };
 		FC6822922B94979D00562C78 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6822912B94979D00562C78 /* SceneDelegate.swift */; };
-		FC6822942B94979D00562C78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6822932B94979D00562C78 /* ViewController.swift */; };
-		FC6822972B94979D00562C78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6822952B94979D00562C78 /* Main.storyboard */; };
+		FC6822942B94979D00562C78 /* PasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6822932B94979D00562C78 /* PasscodeView.swift */; };
 		FC6822992B94979E00562C78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6822982B94979E00562C78 /* Assets.xcassets */; };
 		FC68229C2B94979E00562C78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC68229A2B94979E00562C78 /* LaunchScreen.storyboard */; };
+		FC6822A92B9498A700562C78 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6822A82B9498A700562C78 /* Builder.swift */; };
+		FC6822AC2B949C1D00562C78 /* PasscodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6822AB2B949C1D00562C78 /* PasscodePresenter.swift */; };
+		FC6822AF2B94A61F00562C78 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6822AE2B94A61F00562C78 /* UIView + ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FC68228C2B94979D00562C78 /* instaDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instaDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC68228F2B94979D00562C78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC6822912B94979D00562C78 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FC6822932B94979D00562C78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FC6822962B94979D00562C78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC6822932B94979D00562C78 /* PasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeView.swift; sourceTree = "<group>"; };
 		FC6822982B94979E00562C78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC68229B2B94979E00562C78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC68229D2B94979E00562C78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC6822A82B9498A700562C78 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		FC6822AB2B949C1D00562C78 /* PasscodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodePresenter.swift; sourceTree = "<group>"; };
+		FC6822AE2B94A61F00562C78 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,73 @@
 		FC68228E2B94979D00562C78 /* instaDiary */ = {
 			isa = PBXGroup;
 			children = (
-				FC68228F2B94979D00562C78 /* AppDelegate.swift */,
-				FC6822912B94979D00562C78 /* SceneDelegate.swift */,
-				FC6822932B94979D00562C78 /* ViewController.swift */,
-				FC6822952B94979D00562C78 /* Main.storyboard */,
+				FC6822AD2B94A60300562C78 /* Extension */,
+				FC6822AA2B9499DE00562C78 /* Common */,
+				FC6822A82B9498A700562C78 /* Builder.swift */,
+				FC6822A62B94987F00562C78 /* Module */,
 				FC6822982B94979E00562C78 /* Assets.xcassets */,
 				FC68229A2B94979E00562C78 /* LaunchScreen.storyboard */,
 				FC68229D2B94979E00562C78 /* Info.plist */,
 			);
 			path = instaDiary;
+			sourceTree = "<group>";
+		};
+		FC6822A32B9497D300562C78 /* PasscodeModule */ = {
+			isa = PBXGroup;
+			children = (
+				FC6822A52B94981D00562C78 /* Presenter */,
+				FC6822A42B9497E600562C78 /* View */,
+			);
+			path = PasscodeModule;
+			sourceTree = "<group>";
+		};
+		FC6822A42B9497E600562C78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC6822932B94979D00562C78 /* PasscodeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FC6822A52B94981D00562C78 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FC6822AB2B949C1D00562C78 /* PasscodePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FC6822A62B94987F00562C78 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				FC6822A72B94988F00562C78 /* New Group */,
+				FC6822A32B9497D300562C78 /* PasscodeModule */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		FC6822A72B94988F00562C78 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		FC6822AA2B9499DE00562C78 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FC68228F2B94979D00562C78 /* AppDelegate.swift */,
+				FC6822912B94979D00562C78 /* SceneDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FC6822AD2B94A60300562C78 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FC6822AE2B94A61F00562C78 /* UIView + ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +189,6 @@
 			files = (
 				FC68229C2B94979E00562C78 /* LaunchScreen.storyboard in Resources */,
 				FC6822992B94979E00562C78 /* Assets.xcassets in Resources */,
-				FC6822972B94979D00562C78 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +199,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC6822942B94979D00562C78 /* ViewController.swift in Sources */,
+				FC6822942B94979D00562C78 /* PasscodeView.swift in Sources */,
 				FC6822902B94979D00562C78 /* AppDelegate.swift in Sources */,
 				FC6822922B94979D00562C78 /* SceneDelegate.swift in Sources */,
+				FC6822A92B9498A700562C78 /* Builder.swift in Sources */,
+				FC6822AF2B94A61F00562C78 /* UIView + ext.swift in Sources */,
+				FC6822AC2B949C1D00562C78 /* PasscodePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FC6822952B94979D00562C78 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FC6822962B94979D00562C78 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FC68229A2B94979E00562C78 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,9 +353,8 @@
 				INFOPLIST_FILE = instaDiary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,9 +362,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlexKolch.instaDiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -325,9 +383,8 @@
 				INFOPLIST_FILE = instaDiary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +392,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlexKolch.instaDiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
