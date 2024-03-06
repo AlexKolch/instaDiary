@@ -44,11 +44,30 @@ class PasscodeView: UIViewController {
     
     private lazy var deleteBtn: UIButton = {
         .configure(view: $0) { btn in
-            btn.heightAnchor.constraint(equalToConstant: 36).isActive = true
-            btn.widthAnchor.constraint(equalToConstant: 36).isActive = true
+            btn.heightAnchor.constraint(equalToConstant: 46).isActive = true
+            btn.widthAnchor.constraint(equalToConstant: 46).isActive = true
             btn.setBackgroundImage(.delete, for: .normal)
+           
         }
-    }(UIButton())
+    }(UIButton(primaryAction: deleteCodeAction))
+    
+    lazy var enterCodeAction = UIAction { [weak self] sender in
+        guard
+            let self = self,
+            let sender = sender.sender as? UIButton
+        else {return}
+        
+        self.passcodePresenter.enterPasscode(number: sender.tag) //передаем нажатое число из тега кнопки
+    }
+    
+    lazy var deleteCodeAction = UIAction { [weak self] sender in
+        guard
+            let self = self,
+            let sender = sender.sender as? UIButton
+        else {return}
+        
+        self.passcodePresenter.removeLastItemToPasscode()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +82,7 @@ class PasscodeView: UIViewController {
             let buttonsLine = setHorizontalNumberStack(range: $0)
             keyboardStack.addArrangedSubview(buttonsLine)
         }
+        
         //Создаем вьюхи для пароля и добавляем в стек
         (11...14).forEach {
             let view = getPasswordView(tag: $0)
@@ -71,7 +91,6 @@ class PasscodeView: UIViewController {
         
         setLayout()
     }
-    
 }
 
 extension PasscodeView: PasscodeViewProtocol {
@@ -81,7 +100,15 @@ extension PasscodeView: PasscodeViewProtocol {
     }
     
     func enter(code: [Int]) {
+        print(code)
+        let tag = code.count + 10 //костыль для тегов вьюх пароля)
         
+        ///очистка вью после удаления, от tag - минимальный до макс тега 14
+        (tag...14).forEach {
+            view.viewWithTag($0)?.backgroundColor = .none
+        }
+        ///заполнение вью пир вводе пароля
+        view.viewWithTag(tag)?.backgroundColor = .white
     }
 }
 
@@ -99,8 +126,8 @@ extension PasscodeView {
         let stack = getHorizontalNumberStack()
         
         range.forEach {
-            let numberBtn = UIButton(primaryAction: nil)
-            numberBtn.tag = $0 //записываем в тег значение элемента
+            let numberBtn = UIButton(primaryAction: enterCodeAction)
+            numberBtn.tag = $0 //записываем в тег значение элемента (число из массива buttons)
             numberBtn.setTitle("\($0)", for: .normal)
             numberBtn.setTitleColor(.white, for: .normal)
             numberBtn.titleLabel?.font = UIFont.systemFont(ofSize: 60, weight: .light)
@@ -117,6 +144,7 @@ extension PasscodeView {
             $0.layer.cornerRadius = 10
             $0.tag = tag
             $0.layer.borderColor = UIColor.white.cgColor
+            $0.layer.borderWidth = 2
             
             return $0
         }(UIView())
@@ -137,8 +165,8 @@ extension PasscodeView {
             keyboardStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             keyboardStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 80),
             
-            deleteBtn.rightAnchor.constraint(equalTo: keyboardStack.rightAnchor, constant: -20),
-            deleteBtn.bottomAnchor.constraint(equalTo: keyboardStack.bottomAnchor, constant: -25)
+            deleteBtn.rightAnchor.constraint(equalTo: keyboardStack.rightAnchor, constant: -35),
+            deleteBtn.bottomAnchor.constraint(equalTo: keyboardStack.bottomAnchor, constant: -20)
         ])
     }
 }

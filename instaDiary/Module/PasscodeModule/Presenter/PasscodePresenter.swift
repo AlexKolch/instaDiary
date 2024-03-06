@@ -38,9 +38,23 @@ enum PasscodeState: String {
 
 class PasscodePresenter: PasscodePresenterProtocol {
     
-    var passcode: [Int] = []
     var view: PasscodeViewProtocol
     var passcodeState: PasscodeState
+    
+    var passcode: [Int] = [] {
+        didSet {
+            if passcode.count == 4 {
+                switch passcodeState {
+                case .inputPasscode:
+                    self.checkPasscode()
+                case .setNewPasscode:
+                    self.setNewPasscode()
+                default:
+                    break
+                }
+            }
+        }
+    }
     
     required init(view: PasscodeViewProtocol, state: PasscodeState) {
         self.view = view
@@ -49,13 +63,18 @@ class PasscodePresenter: PasscodePresenterProtocol {
         view.passcode(state: .inputPasscode)
     }
     
-    
     func enterPasscode(number: Int) {
-        
+        if passcode.count < 4 {
+            passcode.append(number)
+            view.enter(code: passcode)
+        }
     }
     
     func removeLastItemToPasscode() {
-        
+        if !passcode.isEmpty {
+            passcode.removeLast()
+            view.enter(code: passcode)
+        }
     }
     
     func setNewPasscode() {
