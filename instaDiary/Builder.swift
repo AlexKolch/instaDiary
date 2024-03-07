@@ -8,13 +8,14 @@
 import UIKit
 
 protocol BuilderProtocol {
-    static func getPasscodeController() -> UIViewController
+    static func getPasscodeController(state: PasscodeState) -> UIViewController
 }
 
 class Builder: BuilderProtocol {
-    static func getPasscodeController() -> UIViewController {
+    static func getPasscodeController(state: PasscodeState) -> UIViewController {
         let passcodeView = PasscodeView()
-        let presenter = PasscodePresenter(view: passcodeView, state: .inputPasscode)
+        let keychainManager = KeychainManager()
+        let presenter = PasscodePresenter(view: passcodeView, state: state, keychainManager: keychainManager)
         passcodeView.passcodePresenter = presenter
         return passcodeView
     }

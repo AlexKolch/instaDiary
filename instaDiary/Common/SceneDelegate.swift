@@ -8,16 +8,27 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
+    private var keychainManager = KeychainManager()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let winScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: winScene)
-        window?.rootViewController = Builder.getPasscodeController()
+        window?.rootViewController = Builder.getPasscodeController(state: checkIsSetPasscode())
         window?.makeKeyAndVisible()
+    }
+    ///проверяет при входе состояние пароля
+    private func checkIsSetPasscode() -> PasscodeState {
+        let keychainPasscodeResult = keychainManager.load(key: KeychainManager.KeychainKeys.passcode.rawValue)
+        
+        switch keychainPasscodeResult {
+        case .success(let code):
+            return code.isEmpty ? .setNewPasscode : .inputPasscode
+        case .failure:
+            return .setNewPasscode
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
