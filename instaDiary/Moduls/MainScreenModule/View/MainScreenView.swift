@@ -13,6 +13,11 @@ protocol MainScreenViewProtocol: AnyObject {
 
 class MainScreenView: UIViewController {
     var presener: MainScreenPresenter!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .appMain
+    }
 }
 
 extension MainScreenView: MainScreenViewProtocol {

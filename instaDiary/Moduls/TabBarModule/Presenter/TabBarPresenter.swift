@@ -26,7 +26,11 @@ class TabBarPresenter {
 extension TabBarPresenter: TabBarPresenterProtocol {
     
     func buildTabBar() {
-        view?.setControllers(controllers: [])
+        let mainScreen = Builder.createMainScreenController()
+        let cameraScreen = Builder.createCameraScreenController()
+        let favoriteScreen = Builder.createFavoriteScreenController()
+        
+        view?.setControllers(controllers: [mainScreen, cameraScreen, favoriteScreen])
     }
     
 }
