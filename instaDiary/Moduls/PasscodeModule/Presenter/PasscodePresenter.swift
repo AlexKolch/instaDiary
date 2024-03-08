@@ -9,7 +9,7 @@ import UIKit
 
 protocol PasscodePresenterProtocol: AnyObject {
     var passcode: [Int] {get set}
-    init(view: PasscodeViewProtocol, state: PasscodeState, keychainManager: KeychainManagerProtocol)
+    init(view: PasscodeViewProtocol, state: PasscodeState, keychainManager: KeychainManagerProtocol, delegate: SceneDelegateProtocol)
     func enterPasscode(number: Int)
     func removeLastItemToPasscode()
     func setNewPasscode()
@@ -38,9 +38,10 @@ enum PasscodeState: String {
 
 class PasscodePresenter: PasscodePresenterProtocol {
     
-    var view: PasscodeViewProtocol
+    weak var view: PasscodeViewProtocol?
     var passcodeState: PasscodeState
     var keychainManager: KeychainManagerProtocol
+    var delegate: SceneDelegateProtocol
     
     var passcode: [Int] = [] {
         didSet {
@@ -59,10 +60,11 @@ class PasscodePresenter: PasscodePresenterProtocol {
     
     var templatePasscode: [Int]? //Временный набор пароля для его проверки
     
-    required init(view: PasscodeViewProtocol, state: PasscodeState, keychainManager: KeychainManagerProtocol) {
+    required init(view: PasscodeViewProtocol, state: PasscodeState, keychainManager: KeychainManagerProtocol, delegate: SceneDelegateProtocol) {
         self.view = view
         self.passcodeState = state
         self.keychainManager = keychainManager
+        self.delegate = delegate
         
         view.passcode(state: passcodeState)
     }
@@ -70,14 +72,14 @@ class PasscodePresenter: PasscodePresenterProtocol {
     func enterPasscode(number: Int) {
         if passcode.count < 4 {
             passcode.append(number)
-            view.enter(code: passcode)
+            view?.enter(code: passcode)
         }
     }
     
     func removeLastItemToPasscode() {
         if !passcode.isEmpty {
             passcode.removeLast()
-            view.enter(code: passcode)
+            view?.enter(code: passcode)
         }
     }
     
@@ -89,8 +91,9 @@ class PasscodePresenter: PasscodePresenterProtocol {
                 let stringPasscode = passcode.map { String($0) }.joined()
                 keychainManager.save(key: KeychainManager.KeychainKeys.passcode.rawValue, value: stringPasscode)
                 print("Saved passcode!")
+                self.delegate.startMainScreen()
             } else {
-                view.passcode(state: .codeNotMatch)
+                view?.passcode(state: .codeNotMatch)
             }
         } else {
             templatePasscode = passcode
@@ -104,6 +107,7 @@ class PasscodePresenter: PasscodePresenterProtocol {
         case .success(let code):
             if passcode == code.digits {
                 print("success math code!")
+                self.delegate.startMainScreen()
             } else  {
                 clearPasscode(state: .wrongPasscode)
             }
@@ -114,8 +118,8 @@ class PasscodePresenter: PasscodePresenterProtocol {
     
     func clearPasscode(state: PasscodeState) {
         passcode = []
-        view.enter(code: [])
-        view.passcode(state: state)
+        view?.enter(code: [])
+        view?.passcode(state: state)
     }
     
     

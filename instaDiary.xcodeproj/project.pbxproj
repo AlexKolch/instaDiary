@@ -18,6 +18,12 @@
 		FC6822A92B9498A700562C78 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6822A82B9498A700562C78 /* Builder.swift */; };
 		FC6822AC2B949C1D00562C78 /* PasscodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6822AB2B949C1D00562C78 /* PasscodePresenter.swift */; };
 		FC6822AF2B94A61F00562C78 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6822AE2B94A61F00562C78 /* UIView + ext.swift */; };
+		FC9BBF352B9B3EB5002C3EAA /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF342B9B3EB5002C3EAA /* MainScreenView.swift */; };
+		FC9BBF372B9B3F01002C3EAA /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF362B9B3F01002C3EAA /* FavoriteView.swift */; };
+		FC9BBF392B9B3F50002C3EAA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF382B9B3F50002C3EAA /* CameraView.swift */; };
+		FC9BBF3B2B9B4227002C3EAA /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF3A2B9B4227002C3EAA /* TabBarView.swift */; };
+		FC9BBF3D2B9B4689002C3EAA /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF3C2B9B4689002C3EAA /* TabBarPresenter.swift */; };
+		FC9BBF3F2B9B4E96002C3EAA /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF3E2B9B4E96002C3EAA /* MainScreenPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +39,12 @@
 		FC6822A82B9498A700562C78 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		FC6822AB2B949C1D00562C78 /* PasscodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodePresenter.swift; sourceTree = "<group>"; };
 		FC6822AE2B94A61F00562C78 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
+		FC9BBF342B9B3EB5002C3EAA /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		FC9BBF362B9B3F01002C3EAA /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		FC9BBF382B9B3F50002C3EAA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		FC9BBF3A2B9B4227002C3EAA /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		FC9BBF3C2B9B4689002C3EAA /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
+		FC9BBF3E2B9B4E96002C3EAA /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +82,7 @@
 				FC6822AA2B9499DE00562C78 /* Common */,
 				FC6822A82B9498A700562C78 /* Builder.swift */,
 				FC64D52B2B99C09100FF0E36 /* KeychainManager.swift */,
-				FC6822A62B94987F00562C78 /* Module */,
+				FC6822A62B94987F00562C78 /* Moduls */,
 				FC6822982B94979E00562C78 /* Assets.xcassets */,
 				FC68229A2B94979E00562C78 /* LaunchScreen.storyboard */,
 				FC68229D2B94979E00562C78 /* Info.plist */,
@@ -103,20 +115,25 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		FC6822A62B94987F00562C78 /* Module */ = {
+		FC6822A62B94987F00562C78 /* Moduls */ = {
 			isa = PBXGroup;
 			children = (
-				FC6822A72B94988F00562C78 /* New Group */,
+				FC9BBF332B9B39F5002C3EAA /* CameraModule */,
+				FC9BBF322B9B39E4002C3EAA /* FavoriteModule */,
+				FC9BBF2E2B9B3951002C3EAA /* MainScreenModule */,
+				FC6822A72B94988F00562C78 /* TabBarModule */,
 				FC6822A32B9497D300562C78 /* PasscodeModule */,
 			);
-			path = Module;
+			path = Moduls;
 			sourceTree = "<group>";
 		};
-		FC6822A72B94988F00562C78 /* New Group */ = {
+		FC6822A72B94988F00562C78 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
+				FC9BBF2D2B9B3921002C3EAA /* Presenter */,
+				FC9BBF2C2B9B3916002C3EAA /* View */,
 			);
-			path = "New Group";
+			path = TabBarModule;
 			sourceTree = "<group>";
 		};
 		FC6822AA2B9499DE00562C78 /* Common */ = {
@@ -135,6 +152,71 @@
 				FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		FC9BBF2C2B9B3916002C3EAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC9BBF3A2B9B4227002C3EAA /* TabBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FC9BBF2D2B9B3921002C3EAA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FC9BBF3C2B9B4689002C3EAA /* TabBarPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FC9BBF2E2B9B3951002C3EAA /* MainScreenModule */ = {
+			isa = PBXGroup;
+			children = (
+				FC9BBF312B9B3981002C3EAA /* Presenter */,
+				FC9BBF302B9B397C002C3EAA /* View */,
+				FC9BBF2F2B9B3976002C3EAA /* Model */,
+			);
+			path = MainScreenModule;
+			sourceTree = "<group>";
+		};
+		FC9BBF2F2B9B3976002C3EAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC9BBF302B9B397C002C3EAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC9BBF342B9B3EB5002C3EAA /* MainScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FC9BBF312B9B3981002C3EAA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FC9BBF3E2B9B4E96002C3EAA /* MainScreenPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FC9BBF322B9B39E4002C3EAA /* FavoriteModule */ = {
+			isa = PBXGroup;
+			children = (
+				FC9BBF362B9B3F01002C3EAA /* FavoriteView.swift */,
+			);
+			path = FavoriteModule;
+			sourceTree = "<group>";
+		};
+		FC9BBF332B9B39F5002C3EAA /* CameraModule */ = {
+			isa = PBXGroup;
+			children = (
+				FC9BBF382B9B3F50002C3EAA /* CameraView.swift */,
+			);
+			path = CameraModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,12 +296,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC6822942B94979D00562C78 /* PasscodeView.swift in Sources */,
+				FC9BBF3D2B9B4689002C3EAA /* TabBarPresenter.swift in Sources */,
 				FC6822902B94979D00562C78 /* AppDelegate.swift in Sources */,
 				FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */,
 				FC64D52C2B99C09100FF0E36 /* KeychainManager.swift in Sources */,
+				FC9BBF352B9B3EB5002C3EAA /* MainScreenView.swift in Sources */,
 				FC6822922B94979D00562C78 /* SceneDelegate.swift in Sources */,
 				FC6822A92B9498A700562C78 /* Builder.swift in Sources */,
+				FC9BBF392B9B3F50002C3EAA /* CameraView.swift in Sources */,
+				FC9BBF3F2B9B4E96002C3EAA /* MainScreenPresenter.swift in Sources */,
 				FC6822AF2B94A61F00562C78 /* UIView + ext.swift in Sources */,
+				FC9BBF372B9B3F01002C3EAA /* FavoriteView.swift in Sources */,
+				FC9BBF3B2B9B4227002C3EAA /* TabBarView.swift in Sources */,
 				FC6822AC2B949C1D00562C78 /* PasscodePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
