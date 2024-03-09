@@ -36,7 +36,7 @@ class Builder: BuilderProtocol {
     static func createMainScreenController() -> UIViewController {
         let mainView = MainScreenView()
         let presenter = MainScreenPresenter(view: mainView)
-        mainView.presener = presenter
+        mainView.presenter = presenter
         return mainView
     }
     
