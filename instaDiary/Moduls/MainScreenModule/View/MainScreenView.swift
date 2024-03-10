@@ -14,6 +14,32 @@ protocol MainScreenViewProtocol: AnyObject {
 class MainScreenView: UIViewController {
     
     var presenter: MainScreenPresenterProtocol!
+    private var topInsets: CGFloat = 0.0
+    private let menuViewHeight = UIApplication.topSafeArea + 70
+    
+    private lazy var topMenuView: UIView = {
+        $0.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: menuViewHeight)
+        $0.backgroundColor = .appMain
+        $0.addSubview(menuAppName)
+        $0.addSubview(settingButton)
+        return $0
+    }(UIView())
+    
+    private lazy var menuAppName: UILabel = {
+        $0.text = "instaPocket"
+        $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        $0.textColor = .white
+        $0.frame = CGRect(x: 50, y: menuViewHeight - 40, width: view.bounds.width, height: 30)
+        
+        return $0
+    }(UILabel())
+    
+    private lazy var settingButton: UIButton = {
+        $0.frame = CGRect(x: view.bounds.width - 50, y: menuViewHeight - 35, width: 25, height: 25)
+        $0.setBackgroundImage(UIImage(systemName: "gear"), for: .normal)
+        $0.tintColor = .white
+        return $0
+    }(UIButton())
     
    private lazy var collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
@@ -24,6 +50,7 @@ class MainScreenView: UIViewController {
        collection.register(MainPostCell.self, forCellWithReuseIdentifier: MainPostCell.reuseId)
        collection.register(MainPostHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MainPostHeader.reuseId)
        collection.alwaysBounceVertical = true
+       collection.contentInset.top = 80
        
        layout.itemSize = CGSize(width: view.frame.width - 60, height: view.frame.width - 60)
        layout.minimumLineSpacing = 30
@@ -32,10 +59,14 @@ class MainScreenView: UIViewController {
        return collection
     }()
     
+//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .appMain
         view.addSubview(collectionView)
+        view.addSubview(topMenuView)
+        
+        topInsets = collectionView.adjustedContentInset.top //отступ коллекции
     }
 }
 
@@ -69,6 +100,18 @@ extension MainScreenView: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: view.frame.width - 60, height: 40)
+    }
+    
+//MARK: - ScrollDelegate
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//      print(scrollView.contentOffset.y + topInsets) //значение высоты начала сколл вью/ преобразовали в 0 значение для удобства благодаря topInsets
+        var menuTopPosition = scrollView.contentOffset.y + topInsets + 59.0
+
+        if menuTopPosition < 43.0, menuTopPosition > 0 {
+            topMenuView.frame.origin.y = -menuTopPosition
+            menuAppName.font = UIFont.systemFont(ofSize: 30 - menuTopPosition * 0.2,
+                                                 weight: .bold)
+        }
     }
 }
 

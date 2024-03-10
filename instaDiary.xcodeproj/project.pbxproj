@@ -11,6 +11,7 @@
 		FC3FCFC02B9CC5090020B3F3 /* MainPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFBF2B9CC5090020B3F3 /* MainPostHeader.swift */; };
 		FC3FCFC22B9CC7770020B3F3 /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC12B9CC7770020B3F3 /* PostItem.swift */; };
 		FC3FCFC42B9CD7DF0020B3F3 /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC32B9CD7DF0020B3F3 /* Date + Ext.swift */; };
+		FC3FCFC62B9DBD4F0020B3F3 /* UIApplication + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC52B9DBD4F0020B3F3 /* UIApplication + Ext.swift */; };
 		FC64D52C2B99C09100FF0E36 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64D52B2B99C09100FF0E36 /* KeychainManager.swift */; };
 		FC64D52F2B99CF0900FF0E36 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = FC64D52E2B99CF0900FF0E36 /* KeychainAccess */; };
 		FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */; };
@@ -35,6 +36,7 @@
 		FC3FCFBF2B9CC5090020B3F3 /* MainPostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostHeader.swift; sourceTree = "<group>"; };
 		FC3FCFC12B9CC7770020B3F3 /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
 		FC3FCFC32B9CD7DF0020B3F3 /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
+		FC3FCFC52B9DBD4F0020B3F3 /* UIApplication + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Ext.swift"; sourceTree = "<group>"; };
 		FC64D52B2B99C09100FF0E36 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringProtocol + Ext.swift"; sourceTree = "<group>"; };
 		FC68228C2B94979D00562C78 /* instaDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instaDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,7 @@
 				FC6822AE2B94A61F00562C78 /* UIView + ext.swift */,
 				FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */,
 				FC3FCFC32B9CD7DF0020B3F3 /* Date + Ext.swift */,
+				FC3FCFC52B9DBD4F0020B3F3 /* UIApplication + Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				FC6822922B94979D00562C78 /* SceneDelegate.swift in Sources */,
 				FC6822A92B9498A700562C78 /* Builder.swift in Sources */,
 				FC9BBF392B9B3F50002C3EAA /* CameraView.swift in Sources */,
+				FC3FCFC62B9DBD4F0020B3F3 /* UIApplication + Ext.swift in Sources */,
 				FC9BBF3F2B9B4E96002C3EAA /* MainScreenPresenter.swift in Sources */,
 				FC6822AF2B94A61F00562C78 /* UIView + ext.swift in Sources */,
 				FC9BBF372B9B3F01002C3EAA /* FavoriteView.swift in Sources */,
