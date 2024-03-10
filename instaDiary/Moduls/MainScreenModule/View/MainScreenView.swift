@@ -84,7 +84,10 @@ extension MainScreenView: UICollectionViewDataSource, UICollectionViewDelegateFl
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPostCell.reuseId, for: indexPath) as? MainPostCell
         else { return UICollectionViewCell() }
         
-        cell.backgroundColor = .gray
+        if let item = presenter.posts?[indexPath.section].items[indexPath.item] {
+            cell.configureCell(item: item)
+        }
+        
         return cell
     }
     
@@ -105,7 +108,7 @@ extension MainScreenView: UICollectionViewDataSource, UICollectionViewDelegateFl
 //MARK: - ScrollDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //      print(scrollView.contentOffset.y + topInsets) //значение высоты начала сколл вью/ преобразовали в 0 значение для удобства благодаря topInsets
-        var menuTopPosition = scrollView.contentOffset.y + topInsets + 59.0
+        let menuTopPosition = scrollView.contentOffset.y + topInsets + 59.0
 
         if menuTopPosition < 43.0, menuTopPosition > 0 {
             topMenuView.frame.origin.y = -menuTopPosition

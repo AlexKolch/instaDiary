@@ -12,6 +12,8 @@
 		FC3FCFC22B9CC7770020B3F3 /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC12B9CC7770020B3F3 /* PostItem.swift */; };
 		FC3FCFC42B9CD7DF0020B3F3 /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC32B9CD7DF0020B3F3 /* Date + Ext.swift */; };
 		FC3FCFC62B9DBD4F0020B3F3 /* UIApplication + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC52B9DBD4F0020B3F3 /* UIApplication + Ext.swift */; };
+		FC3FCFC92B9DDE940020B3F3 /* TagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC82B9DDE940020B3F3 /* TagCollectionView.swift */; };
+		FC3FCFCB2B9DE3180020B3F3 /* TagCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFCA2B9DE3180020B3F3 /* TagCollectionVCell.swift */; };
 		FC64D52C2B99C09100FF0E36 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64D52B2B99C09100FF0E36 /* KeychainManager.swift */; };
 		FC64D52F2B99CF0900FF0E36 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = FC64D52E2B99CF0900FF0E36 /* KeychainAccess */; };
 		FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */; };
@@ -37,6 +39,8 @@
 		FC3FCFC12B9CC7770020B3F3 /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
 		FC3FCFC32B9CD7DF0020B3F3 /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
 		FC3FCFC52B9DBD4F0020B3F3 /* UIApplication + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Ext.swift"; sourceTree = "<group>"; };
+		FC3FCFC82B9DDE940020B3F3 /* TagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionView.swift; sourceTree = "<group>"; };
+		FC3FCFCA2B9DE3180020B3F3 /* TagCollectionVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionVCell.swift; sourceTree = "<group>"; };
 		FC64D52B2B99C09100FF0E36 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringProtocol + Ext.swift"; sourceTree = "<group>"; };
 		FC68228C2B94979D00562C78 /* instaDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instaDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +73,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC3FCFC72B9DDE7F0020B3F3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FC3FCFC82B9DDE940020B3F3 /* TagCollectionView.swift */,
+				FC3FCFCA2B9DE3180020B3F3 /* TagCollectionVCell.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		FC6822832B94979D00562C78 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +101,7 @@
 		FC68228E2B94979D00562C78 /* instaDiary */ = {
 			isa = PBXGroup;
 			children = (
+				FC3FCFC72B9DDE7F0020B3F3 /* Helpers */,
 				FC6822AD2B94A60300562C78 /* Extension */,
 				FC6822AA2B9499DE00562C78 /* Common */,
 				FC6822A82B9498A700562C78 /* Builder.swift */,
@@ -324,9 +338,11 @@
 				FC9BBF392B9B3F50002C3EAA /* CameraView.swift in Sources */,
 				FC3FCFC62B9DBD4F0020B3F3 /* UIApplication + Ext.swift in Sources */,
 				FC9BBF3F2B9B4E96002C3EAA /* MainScreenPresenter.swift in Sources */,
+				FC3FCFCB2B9DE3180020B3F3 /* TagCollectionVCell.swift in Sources */,
 				FC6822AF2B94A61F00562C78 /* UIView + ext.swift in Sources */,
 				FC9BBF372B9B3F01002C3EAA /* FavoriteView.swift in Sources */,
 				FC9BBF3B2B9B4227002C3EAA /* TabBarView.swift in Sources */,
+				FC3FCFC92B9DDE940020B3F3 /* TagCollectionView.swift in Sources */,
 				FC3FCFBE2B9CC4A90020B3F3 /* MainPostCell.swift in Sources */,
 				FC6822AC2B949C1D00562C78 /* PasscodePresenter.swift in Sources */,
 			);
