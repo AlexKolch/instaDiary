@@ -15,7 +15,7 @@ protocol MainScreenPresenterProtocol: AnyObject {
 
 class MainScreenPresenter: MainScreenPresenterProtocol {
     
-    weak var view: MainScreenViewProtocol?
+    private weak var view: MainScreenViewProtocol?
     var posts: [PostDate]?
     
     required init(view: MainScreenViewProtocol) {
@@ -27,5 +27,5 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
         posts = PostDate.getMockData()
         view?.showPost()
     }
-
+    
 }
