@@ -41,12 +41,6 @@ extension Date{
         return formatter.string(from: self)
     }
     
-    func formattDate() -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ru")
-        formatter.dateFormat = "dd LLLL yyyy"
-        return formatter.string(from: self)
-    }
 }
 
 enum DateFormatType {

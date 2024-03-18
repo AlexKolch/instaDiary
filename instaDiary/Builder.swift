@@ -54,4 +54,12 @@ class Builder: BuilderProtocol {
         
         return cameraView
     }
+    
+    static func createDetailsController(item: PostItem) -> UIViewController {
+        let detailsView = DetailsView()
+        let presenter = DetailsPresenter(view: detailsView, item: item)
+        
+        detailsView.presenter = presenter
+        return detailsView
+    }
 }

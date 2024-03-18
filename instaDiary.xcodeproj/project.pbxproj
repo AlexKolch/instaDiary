@@ -33,6 +33,9 @@
 		FC9BBF3B2B9B4227002C3EAA /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF3A2B9B4227002C3EAA /* TabBarView.swift */; };
 		FC9BBF3D2B9B4689002C3EAA /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF3C2B9B4689002C3EAA /* TabBarPresenter.swift */; };
 		FC9BBF3F2B9B4E96002C3EAA /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF3E2B9B4E96002C3EAA /* MainScreenPresenter.swift */; };
+		FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */; };
+		FCFAE7A42BA6C764005C8A9B /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */; };
+		FCFAE7A62BA85558005C8A9B /* NavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +66,9 @@
 		FC9BBF3A2B9B4227002C3EAA /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		FC9BBF3C2B9B4689002C3EAA /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		FC9BBF3E2B9B4E96002C3EAA /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
+		FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 		FC3FCFC72B9DDE7F0020B3F3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FCFAE7A72BA8555F005C8A9B /* Navigation */,
 				FC3FCFC82B9DDE940020B3F3 /* TagCollectionView.swift */,
 				FC3FCFCA2B9DE3180020B3F3 /* TagCollectionVCell.swift */,
 			);
@@ -163,6 +170,7 @@
 		FC6822A62B94987F00562C78 /* Moduls */ = {
 			isa = PBXGroup;
 			children = (
+				FCFAE79E2BA6C67F005C8A9B /* DetailsModule */,
 				FC9BBF332B9B39F5002C3EAA /* CameraModule */,
 				FC9BBF322B9B39E4002C3EAA /* FavoriteModule */,
 				FC9BBF2E2B9B3951002C3EAA /* MainScreenModule */,
@@ -270,6 +278,39 @@
 			path = CameraModule;
 			sourceTree = "<group>";
 		};
+		FCFAE79E2BA6C67F005C8A9B /* DetailsModule */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7A22BA6C6AC005C8A9B /* Presenter */,
+				FCFAE7A12BA6C6A4005C8A9B /* View */,
+			);
+			path = DetailsModule;
+			sourceTree = "<group>";
+		};
+		FCFAE7A12BA6C6A4005C8A9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FCFAE7A22BA6C6AC005C8A9B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FCFAE7A72BA8555F005C8A9B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -351,7 +392,9 @@
 				FC3FCFC22B9CC7770020B3F3 /* PostItem.swift in Sources */,
 				FC6822902B94979D00562C78 /* AppDelegate.swift in Sources */,
 				FC3FCFC02B9CC5090020B3F3 /* MainPostHeader.swift in Sources */,
+				FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */,
 				FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */,
+				FCFAE7A42BA6C764005C8A9B /* DetailsPresenter.swift in Sources */,
 				FC64D52C2B99C09100FF0E36 /* KeychainManager.swift in Sources */,
 				FC3FCFC42B9CD7DF0020B3F3 /* Date + Ext.swift in Sources */,
 				FC9BBF352B9B3EB5002C3EAA /* MainScreenView.swift in Sources */,
@@ -366,6 +409,7 @@
 				FC9BBF3B2B9B4227002C3EAA /* TabBarView.swift in Sources */,
 				FC3FCFC92B9DDE940020B3F3 /* TagCollectionView.swift in Sources */,
 				FC3FCFBE2B9CC4A90020B3F3 /* MainPostCell.swift in Sources */,
+				FCFAE7A62BA85558005C8A9B /* NavigationHeader.swift in Sources */,
 				FC3FCFD32BA5DD6E0020B3F3 /* FavoritePresenter.swift in Sources */,
 				FC3FCFD52BA5F35A0020B3F3 /* FavoriteCell.swift in Sources */,
 				FC6822AC2B949C1D00562C78 /* PasscodePresenter.swift in Sources */,
