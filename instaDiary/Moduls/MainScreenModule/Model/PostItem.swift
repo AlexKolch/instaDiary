@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class PostDate: Identifiable {
     let id = UUID().uuidString
@@ -47,19 +48,21 @@ class PostItem: Identifiable {
     let description: String?
     let isFavorite: Bool
     let date: Date
+    let location: CLLocationCoordinate2D?
     
-    init(photos: [String], comments: [Comment]?, tags: [String]?, description: String?, isFavorite: Bool = false, date: Date) {
+    init(photos: [String], comments: [Comment]?, tags: [String]?, description: String?, isFavorite: Bool = false, date: Date, location: CLLocationCoordinate2D? = nil) {
         self.photos = photos
         self.comments = comments
         self.tags = tags
         self.description = description
         self.isFavorite = isFavorite
         self.date = date
+        self.location = location
     }
     
     static func getPostItem() -> [PostItem] {
         [
-            PostItem(photos: ["img1", "img2"], comments: [Comment(date: Date(), comment: "jbdjasj SDFSD bdhbashbd hab"), Comment(date: Date(), comment: "jbdjasj  hab"), Comment(date: Date(), comment: "jbdjasj bdhbashbd hab"), Comment(date: Date(), comment: "jbdSFEFDS SD FSD SFDjasj bdhbashbd hab")], tags: ["Дом", "Nature"], description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit", isFavorite: true, date: Date()),
+            PostItem(photos: ["img1", "img2"], comments: [Comment(date: Date(), comment: "jbdjasj SDFSD bdhbashbd hab"), Comment(date: Date(), comment: "jbdjasj  hab"), Comment(date: Date(), comment: "jbdjasj bdhbashbd hab"), Comment(date: Date(), comment: "jbdSFEFDS SD FSD SFDjasj bdhbashbd hab")], tags: ["Дом", "Nature"], description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit", isFavorite: true, date: Date(), location: CLLocationCoordinate2D(latitude: 40.728, longitude: -74)),
             
             PostItem(photos: ["img2", "img3"], comments: nil, tags: ["Дом", "Nature"], description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit", isFavorite: true, date: Date()),
             
