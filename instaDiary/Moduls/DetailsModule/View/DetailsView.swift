@@ -18,6 +18,7 @@ class DetailsView: UIViewController {
     
     private lazy var topMenuView: UIView = {
         $0.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: menuViewHeight)
+        $0.backgroundColor = .appMain
         return $0
     }(UIView())
     
@@ -39,6 +40,10 @@ class DetailsView: UIViewController {
         $0.dataSource = self
         $0.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         $0.register(TagCollectionVCell.self, forCellWithReuseIdentifier: TagCollectionVCell.reuseId)
+        $0.register(DetailsPhotoCell.self, forCellWithReuseIdentifier: DetailsPhotoCell.reuseId)
+        $0.register(DetailDescriptionCell.self, forCellWithReuseIdentifier: DetailDescriptionCell.reuseId)
+        $0.register(DetailsAddCommentCell.self, forCellWithReuseIdentifier: DetailsAddCommentCell.reuseId)
+        $0.register(DetailsMapCell.self, forCellWithReuseIdentifier: DetailsMapCell.reuseId)
         return $0
     }(UICollectionView(frame: view.bounds, collectionViewLayout: getCompositionLayout()))
     
@@ -46,6 +51,7 @@ class DetailsView: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .appMain
         view.addSubview(collectionView)
+        view.addSubview(topMenuView)
         setupNavHeader()
     }
     
@@ -114,10 +120,10 @@ class DetailsView: UIViewController {
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitems: [.init(layoutSize: groupSize)])
-        group.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: nil, trailing: nil, bottom: .fixed(10))
+        group.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: nil, trailing: nil, bottom: nil)
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 30, bottom: 0, trailing: 30)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 30, bottom: 0, trailing: 30)
        
         return section
     }
@@ -157,8 +163,6 @@ extension DetailsView: UICollectionViewDataSource {
             return presenter.postItem.photos.count
         case 1:
             return presenter.postItem.tags?.count ?? 0
-        case 2, 4, 5:
-            return 1
         case 3:
             return presenter.postItem.comments?.count ?? 0
         default:
@@ -171,20 +175,40 @@ extension DetailsView: UICollectionViewDataSource {
         let item = presenter.postItem
         
         switch indexPath.section {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsPhotoCell.reuseId, for: indexPath) as! DetailsPhotoCell
+            cell.configure(image: item.photos[indexPath.item])
+            return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionVCell.reuseId, for: indexPath) as! TagCollectionVCell
             cell.configureCell(tag: item.tags?[indexPath.item] ?? "")
+            return cell
+        case 2,3:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailDescriptionCell.reuseId, for: indexPath) as! DetailDescriptionCell
+            
+            if indexPath.section == 2 {
+                cell.configureCell(date: nil, text: item.description ?? "")
+            } else {
+                let comment = item.comments?[indexPath.item]
+                cell.configureCell(date: comment?.date, text: comment?.comment ?? "")
+            }
+            return cell
+        case 4:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsAddCommentCell.reuseId, for: indexPath) as! DetailsAddCommentCell
+            cell.completion = { textComment in
+                print(textComment)
+            }
+            return cell
+        case 5:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsMapCell.reuseId, for: indexPath) as! DetailsMapCell
+            cell.configureCell(coordinate: item.location)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
             cell.backgroundColor = .gray
             return cell
         }
-        
-        
     }
-    
-    
 }
 
 extension DetailsView: DetailsViewProtocol {
