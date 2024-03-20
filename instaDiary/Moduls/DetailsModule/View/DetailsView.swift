@@ -50,6 +50,7 @@ class DetailsView: UIViewController {
         return $0
     }(UICollectionView(frame: view.bounds, collectionViewLayout: getCompositionLayout()))
     
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .appMain
@@ -63,8 +64,11 @@ class DetailsView: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.setHidesBackButton(true, animated: true) //тогда не будет работать жест смахивания страницы(можно добваить свой жест)
         navigationController?.navigationBar.isHidden = true
+        
+        NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : true])
     }
     
+    //MARK: - setup NavBar & Layout
     ///устанавливаем нужного типа navigationHeader
     private func setupNavHeader() {
         let navView = navigationHeader.getNavigationHeader(type: .back)

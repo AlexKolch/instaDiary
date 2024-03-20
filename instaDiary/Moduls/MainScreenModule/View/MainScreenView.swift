@@ -26,7 +26,7 @@ class MainScreenView: UIViewController {
     }(UIView())
     
     private lazy var menuAppName: UILabel = {
-        $0.text = "instaPocket"
+        $0.text = "instaDiary"
         $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .white
         $0.frame = CGRect(x: 50, y: menuViewHeight - 40, width: view.bounds.width, height: 30)
@@ -68,8 +68,14 @@ class MainScreenView: UIViewController {
         
         topInsets = collectionView.adjustedContentInset.top //отступ коллекции
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : false])
+    }
 }
 
+//MARK: - CollectionViewDelegate
 extension MainScreenView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

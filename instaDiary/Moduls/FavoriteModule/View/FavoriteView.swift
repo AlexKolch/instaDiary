@@ -44,6 +44,7 @@ class FavoriteView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavBar() //Устанавливаем здесь, чтобы reloadData не затирала наши настройки навБара и навБар прорисовывался заново при каждой перезагрузки вью
+        NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : false])
     }
     
     private func setupNavBar() {
