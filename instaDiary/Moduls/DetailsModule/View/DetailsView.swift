@@ -14,6 +14,8 @@ protocol DetailsViewProtocol: AnyObject {
 class DetailsView: UIViewController {
     
     var presenter: DetailsPresenterProtocol!
+    var photoView: PhotoView! //объявили здесь, чтобы обнулять ссылку при уничтожении photoView контроллера (232 строчка)
+    
     private let menuViewHeight = UIApplication.topSafeArea + 50
     
     private lazy var topMenuView: UIView = {
@@ -38,6 +40,7 @@ class DetailsView: UIViewController {
         $0.backgroundColor = .clear
         $0.contentInset = UIEdgeInsets(top: 80, left: 0, bottom: 100, right: 0)
         $0.dataSource = self
+        $0.delegate = self
         $0.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         $0.register(TagCollectionVCell.self, forCellWithReuseIdentifier: TagCollectionVCell.reuseId)
         $0.register(DetailsPhotoCell.self, forCellWithReuseIdentifier: DetailsPhotoCell.reuseId)
@@ -170,7 +173,6 @@ extension DetailsView: UICollectionViewDataSource {
         }
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = presenter.postItem
         
@@ -207,6 +209,30 @@ extension DetailsView: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
             cell.backgroundColor = .gray
             return cell
+        }
+    }
+}
+
+extension DetailsView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let itemPhoto = presenter.postItem.photos[indexPath.item] //получили конкретную нажатую фотку
+            
+            photoView = Builder.createPhotoViewController(image: UIImage(named: itemPhoto)) as? PhotoView
+            
+            if photoView != nil {
+                addChild(photoView!)
+                photoView?.view.frame = view.bounds
+                view.addSubview(photoView!.view) //добавляем на вью вьюху дочернего контроллера
+                
+                ///Код который выполнится при нажатии кнопки closeButton
+                photoView!.completion = { [weak self] in
+                    self?.photoView!.view.removeFromSuperview()
+                    self?.photoView?.removeFromParent()
+                    self?.photoView = nil //обнуляем/уничтожаем ссылку на childVewController чтобы не создать утечку памяти
+                }
+            }
+            
         }
     }
 }

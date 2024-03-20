@@ -38,6 +38,8 @@
 		FCDEF5CA2BA9955500EE57B7 /* DetailsAddCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5C92BA9955500EE57B7 /* DetailsAddCommentCell.swift */; };
 		FCDEF5CC2BA9969800EE57B7 /* UITextField + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5CB2BA9969800EE57B7 /* UITextField + ext.swift */; };
 		FCDEF5CE2BA99DB600EE57B7 /* DetailsMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5CD2BA99DB600EE57B7 /* DetailsMapCell.swift */; };
+		FCDEF5D32BAAA92400EE57B7 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5D22BAAA92400EE57B7 /* PhotoView.swift */; };
+		FCDEF5D52BAAB3B000EE57B7 /* PhotoViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5D42BAAB3B000EE57B7 /* PhotoViewPresenter.swift */; };
 		FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */; };
 		FCFAE7A42BA6C764005C8A9B /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */; };
 		FCFAE7A62BA85558005C8A9B /* NavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */; };
@@ -76,6 +78,8 @@
 		FCDEF5C92BA9955500EE57B7 /* DetailsAddCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAddCommentCell.swift; sourceTree = "<group>"; };
 		FCDEF5CB2BA9969800EE57B7 /* UITextField + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + ext.swift"; sourceTree = "<group>"; };
 		FCDEF5CD2BA99DB600EE57B7 /* DetailsMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapCell.swift; sourceTree = "<group>"; };
+		FCDEF5D22BAAA92400EE57B7 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		FCDEF5D42BAAB3B000EE57B7 /* PhotoViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewPresenter.swift; sourceTree = "<group>"; };
 		FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeader.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 		FC6822A62B94987F00562C78 /* Moduls */ = {
 			isa = PBXGroup;
 			children = (
+				FCDEF5CF2BAAA81100EE57B7 /* PhotoViewModule */,
 				FCFAE79E2BA6C67F005C8A9B /* DetailsModule */,
 				FC9BBF332B9B39F5002C3EAA /* CameraModule */,
 				FC9BBF322B9B39E4002C3EAA /* FavoriteModule */,
@@ -300,6 +305,31 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		FCDEF5CF2BAAA81100EE57B7 /* PhotoViewModule */ = {
+			isa = PBXGroup;
+			children = (
+				FCDEF5D12BAAA89800EE57B7 /* View */,
+				FCDEF5D02BAAA89100EE57B7 /* Presenter */,
+			);
+			path = PhotoViewModule;
+			sourceTree = "<group>";
+		};
+		FCDEF5D02BAAA89100EE57B7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FCDEF5D42BAAB3B000EE57B7 /* PhotoViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FCDEF5D12BAAA89800EE57B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FCDEF5D22BAAA92400EE57B7 /* PhotoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FCFAE79E2BA6C67F005C8A9B /* DetailsModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +446,7 @@
 				FCDEF5C62BA9874000EE57B7 /* DetailsPhotoCell.swift in Sources */,
 				FCDEF5CA2BA9955500EE57B7 /* DetailsAddCommentCell.swift in Sources */,
 				FC3FCFC22B9CC7770020B3F3 /* PostItem.swift in Sources */,
+				FCDEF5D52BAAB3B000EE57B7 /* PhotoViewPresenter.swift in Sources */,
 				FC6822902B94979D00562C78 /* AppDelegate.swift in Sources */,
 				FC3FCFC02B9CC5090020B3F3 /* MainPostHeader.swift in Sources */,
 				FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */,
@@ -425,6 +456,7 @@
 				FCDEF5CC2BA9969800EE57B7 /* UITextField + ext.swift in Sources */,
 				FC3FCFC42B9CD7DF0020B3F3 /* Date + Ext.swift in Sources */,
 				FC9BBF352B9B3EB5002C3EAA /* MainScreenView.swift in Sources */,
+				FCDEF5D32BAAA92400EE57B7 /* PhotoView.swift in Sources */,
 				FC6822922B94979D00562C78 /* SceneDelegate.swift in Sources */,
 				FC6822A92B9498A700562C78 /* Builder.swift in Sources */,
 				FC9BBF392B9B3F50002C3EAA /* CameraView.swift in Sources */,
