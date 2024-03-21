@@ -41,6 +41,7 @@
 		FCDEF5D32BAAA92400EE57B7 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5D22BAAA92400EE57B7 /* PhotoView.swift */; };
 		FCDEF5D52BAAB3B000EE57B7 /* PhotoViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5D42BAAB3B000EE57B7 /* PhotoViewPresenter.swift */; };
 		FCDEF5D72BAAF0E400EE57B7 /* NSNotification.Name.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5D62BAAF0E400EE57B7 /* NSNotification.Name.ext.swift */; };
+		FCDEF5D92BAB637700EE57B7 /* CameraViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5D82BAB637700EE57B7 /* CameraViewPresenter.swift */; };
 		FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */; };
 		FCFAE7A42BA6C764005C8A9B /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */; };
 		FCFAE7A62BA85558005C8A9B /* NavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */; };
@@ -82,6 +83,7 @@
 		FCDEF5D22BAAA92400EE57B7 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		FCDEF5D42BAAB3B000EE57B7 /* PhotoViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewPresenter.swift; sourceTree = "<group>"; };
 		FCDEF5D62BAAF0E400EE57B7 /* NSNotification.Name.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.Name.ext.swift; sourceTree = "<group>"; };
+		FCDEF5D82BAB637700EE57B7 /* CameraViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewPresenter.swift; sourceTree = "<group>"; };
 		FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeader.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				FC9BBF382B9B3F50002C3EAA /* CameraView.swift */,
+				FCDEF5D82BAB637700EE57B7 /* CameraViewPresenter.swift */,
 			);
 			path = CameraModule;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				FCDEF5C82BA98B9E00EE57B7 /* DetailDescriptionCell.swift in Sources */,
 				FC3FCFD52BA5F35A0020B3F3 /* FavoriteCell.swift in Sources */,
 				FC6822AC2B949C1D00562C78 /* PasscodePresenter.swift in Sources */,
+				FCDEF5D92BAB637700EE57B7 /* CameraViewPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

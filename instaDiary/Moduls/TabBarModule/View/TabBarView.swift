@@ -25,6 +25,7 @@ class TabBarView: UITabBarController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(hideTabBar), name: .hideTabBar, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(goToMainView), name: .goToMain, object: nil)
         
         view.backgroundColor = .appMain
         self.tabBar.isHidden = true
@@ -51,7 +52,11 @@ class TabBarView: UITabBarController {
         
         self.selectedIndex = sender.tag
     }
-    ///функция нотификации
+    ///функции нотификации
+    @objc func goToMainView() {
+        self.selectedIndex = 0
+    }
+    
     @objc func hideTabBar(sender: Notification) {
         let isHide = sender.userInfo?["isHide"] as! Bool //будем получать нотификацию по такому ключу
         UIView.animate(withDuration: 0.2) { [weak self] in

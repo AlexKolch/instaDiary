@@ -51,8 +51,10 @@ class Builder: BuilderProtocol {
     
     static func createCameraScreenController() -> UIViewController {
         let cameraView = CameraView()
+        let presenter = CameraViewPresenter(view: cameraView)
         
-        return cameraView
+        cameraView.presenter = presenter
+        return UINavigationController(rootViewController: cameraView) 
     }
     
     static func createDetailsController(item: PostItem) -> UIViewController {
