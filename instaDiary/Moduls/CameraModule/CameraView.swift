@@ -6,15 +6,15 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol CameraViewProtocol: AnyObject {
-    
 }
 
 class CameraView: UIViewController, CameraViewProtocol {
     
     var presenter: CameraViewPresenterProtocol!
-    
+//MARK: - UI config
     lazy var shotsCollectionView: UICollectionView = {
         let layout = $0.collectionViewLayout as! UICollectionViewFlowLayout
         layout.scrollDirection = .horizontal
@@ -40,8 +40,12 @@ class CameraView: UIViewController, CameraViewProtocol {
         return $0
     }(UIButton(frame: CGRect(x: view.center.x - 30, y: view.frame.height - 110, width: 60, height: 60), primaryAction: shotAction))
     
-    private lazy var shotAction = UIAction { _ in
+    private lazy var shotAction = UIAction { [weak self] _ in
         print(#function)
+        guard let self else {return}
+        let photoSettings = AVCapturePhotoSettings() //настройки камеры
+        photoSettings.flashMode = .auto
+        self.presenter.cameraService.output.capturePhoto(with: photoSettings, delegate: self)
     }
     
     private lazy var switchBtn: UIButton = {
@@ -60,9 +64,12 @@ class CameraView: UIViewController, CameraViewProtocol {
         return $0
     }(UIButton())
     
+//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray
+        checkPermission()
+        setPreviewLayer()
+     
         view.addSubview(shotsCollectionView)
         view.addSubview(closeBtn)
         view.addSubview(shotBtn)
@@ -72,10 +79,57 @@ class CameraView: UIViewController, CameraViewProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter.cameraService.setupCaptureSession()
+        
+        if presenter.photos.count == 0 {
+            shotsCollectionView.reloadData()
+        }
         NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : true])
         navigationController?.navigationBar.isHidden = true
     }
-    
+//MARK: - private func
+    ///Проверяет доступ к камере
+    private func checkPermission() {
+        let cameraStatusAuth = AVCaptureDevice.authorizationStatus(for: .video)
+        
+        switch cameraStatusAuth {
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { isAuth in
+                if !isAuth {
+                    abort()
+                }
+            }
+        case .restricted, .denied:
+            abort() //ничего не будет
+        case .authorized:
+            return
+        default:
+            fatalError()
+        }
+    }
+    ///Настройка превью камеры
+    private func setPreviewLayer() {
+        let previewLayer = AVCaptureVideoPreviewLayer(session: presenter.cameraService.captureSession)
+        
+        previewLayer.frame = view.bounds
+        previewLayer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(previewLayer)
+    }
+}
+//MARK: - extension
+extension CameraView: AVCapturePhotoCaptureDelegate {
+    ///Срабатывает когда нажали сделать снимок
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard error == nil else {
+            print(error!.localizedDescription)
+            return
+        }
+        guard let photoData = photo.fileDataRepresentation() else { return }
+        if let image = UIImage(data: photoData) {
+            presenter.photos.append(image)
+            self.shotsCollectionView.reloadData()
+        }
+    } 
 }
 
 extension CameraView: UICollectionViewDataSource {
@@ -86,9 +140,10 @@ extension CameraView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shotCell", for: indexPath)
-        
+        let photo = presenter.photos[indexPath.item] //взяли фоку
+        let imageView: UIImageView = .setImageView(image: photo)
+        cell.addSubview(imageView)
         return cell
     }
-    
     
 }

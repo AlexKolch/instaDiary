@@ -42,6 +42,8 @@
 		FCDEF5D52BAAB3B000EE57B7 /* PhotoViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5D42BAAB3B000EE57B7 /* PhotoViewPresenter.swift */; };
 		FCDEF5D72BAAF0E400EE57B7 /* NSNotification.Name.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5D62BAAF0E400EE57B7 /* NSNotification.Name.ext.swift */; };
 		FCDEF5D92BAB637700EE57B7 /* CameraViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5D82BAB637700EE57B7 /* CameraViewPresenter.swift */; };
+		FCDEF5DC2BABFEEE00EE57B7 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5DB2BABFEEE00EE57B7 /* CameraService.swift */; };
+		FCDEF5DE2BAC3B2F00EE57B7 /* UIImageView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5DD2BAC3B2F00EE57B7 /* UIImageView + ext.swift */; };
 		FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */; };
 		FCFAE7A42BA6C764005C8A9B /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */; };
 		FCFAE7A62BA85558005C8A9B /* NavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */; };
@@ -84,6 +86,8 @@
 		FCDEF5D42BAAB3B000EE57B7 /* PhotoViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewPresenter.swift; sourceTree = "<group>"; };
 		FCDEF5D62BAAF0E400EE57B7 /* NSNotification.Name.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.Name.ext.swift; sourceTree = "<group>"; };
 		FCDEF5D82BAB637700EE57B7 /* CameraViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewPresenter.swift; sourceTree = "<group>"; };
+		FCDEF5DB2BABFEEE00EE57B7 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
+		FCDEF5DD2BAC3B2F00EE57B7 /* UIImageView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + ext.swift"; sourceTree = "<group>"; };
 		FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeader.swift; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				FC3FCFC52B9DBD4F0020B3F3 /* UIApplication + Ext.swift */,
 				FCDEF5CB2BA9969800EE57B7 /* UITextField + ext.swift */,
 				FCDEF5D62BAAF0E400EE57B7 /* NSNotification.Name.ext.swift */,
+				FCDEF5DD2BAC3B2F00EE57B7 /* UIImageView + ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 		FC9BBF332B9B39F5002C3EAA /* CameraModule */ = {
 			isa = PBXGroup;
 			children = (
+				FCDEF5DA2BABFEDB00EE57B7 /* CameraService */,
 				FC9BBF382B9B3F50002C3EAA /* CameraView.swift */,
 				FCDEF5D82BAB637700EE57B7 /* CameraViewPresenter.swift */,
 			);
@@ -334,6 +340,14 @@
 				FCDEF5D22BAAA92400EE57B7 /* PhotoView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FCDEF5DA2BABFEDB00EE57B7 /* CameraService */ = {
+			isa = PBXGroup;
+			children = (
+				FCDEF5DB2BABFEEE00EE57B7 /* CameraService.swift */,
+			);
+			path = CameraService;
 			sourceTree = "<group>";
 		};
 		FCFAE79E2BA6C67F005C8A9B /* DetailsModule */ = {
@@ -454,11 +468,13 @@
 				FC3FCFC22B9CC7770020B3F3 /* PostItem.swift in Sources */,
 				FCDEF5D52BAAB3B000EE57B7 /* PhotoViewPresenter.swift in Sources */,
 				FC6822902B94979D00562C78 /* AppDelegate.swift in Sources */,
+				FCDEF5DC2BABFEEE00EE57B7 /* CameraService.swift in Sources */,
 				FC3FCFC02B9CC5090020B3F3 /* MainPostHeader.swift in Sources */,
 				FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */,
 				FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */,
 				FCFAE7A42BA6C764005C8A9B /* DetailsPresenter.swift in Sources */,
 				FC64D52C2B99C09100FF0E36 /* KeychainManager.swift in Sources */,
+				FCDEF5DE2BAC3B2F00EE57B7 /* UIImageView + ext.swift in Sources */,
 				FCDEF5CC2BA9969800EE57B7 /* UITextField + ext.swift in Sources */,
 				FCDEF5D72BAAF0E400EE57B7 /* NSNotification.Name.ext.swift in Sources */,
 				FC3FCFC42B9CD7DF0020B3F3 /* Date + Ext.swift in Sources */,
@@ -627,6 +643,7 @@
 				DEVELOPMENT_TEAM = 527U829H6E;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = instaDiary/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Приложение может использовать вашу камеру";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -657,6 +674,7 @@
 				DEVELOPMENT_TEAM = 527U829H6E;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = instaDiary/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Приложение может использовать вашу камеру";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

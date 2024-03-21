@@ -34,11 +34,11 @@ class FavoriteView: UIViewController {
         return $0
     }(UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout()))
     
+//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .appMain
         view.addSubview(collectionView)
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +63,7 @@ class FavoriteView: UIViewController {
     }
 }
 
-
+//MARK: - DataSource & Delegate
 extension FavoriteView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
