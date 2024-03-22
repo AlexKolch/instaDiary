@@ -8,8 +8,9 @@
 import UIKit
 
 protocol PasscodePresenterProtocol: AnyObject {
+    var wasSetting: Bool {get set}
     var passcode: [Int] {get set}
-    init(view: PasscodeViewProtocol, state: PasscodeState, keychainManager: KeychainManagerProtocol, delegate: SceneDelegateProtocol)
+    init(view: PasscodeViewProtocol, state: PasscodeState, keychainManager: KeychainManagerProtocol, delegate: SceneDelegateProtocol?, wasSetting: Bool)
     func enterPasscode(number: Int)
     func removeLastItemToPasscode()
     func setNewPasscode()
@@ -37,11 +38,13 @@ enum PasscodeState: String {
 }
 
 class PasscodePresenter: PasscodePresenterProtocol {
+    var wasSetting: Bool
+    
     
     weak var view: PasscodeViewProtocol?
     var passcodeState: PasscodeState
     var keychainManager: KeychainManagerProtocol
-    var delegate: SceneDelegateProtocol
+    var delegate: SceneDelegateProtocol?
     
     var passcode: [Int] = [] {
         didSet {
@@ -60,11 +63,13 @@ class PasscodePresenter: PasscodePresenterProtocol {
     
     var templatePasscode: [Int]? //Временный набор пароля для его проверки
     
-    required init(view: PasscodeViewProtocol, state: PasscodeState, keychainManager: KeychainManagerProtocol, delegate: SceneDelegateProtocol) {
+    required init(view: PasscodeViewProtocol, state: PasscodeState, keychainManager: KeychainManagerProtocol, delegate: SceneDelegateProtocol?,
+                  wasSetting: Bool) {
         self.view = view
         self.passcodeState = state
         self.keychainManager = keychainManager
         self.delegate = delegate
+        self.wasSetting = true
         
         view.passcode(state: passcodeState)
     }
@@ -91,7 +96,14 @@ class PasscodePresenter: PasscodePresenterProtocol {
                 let stringPasscode = passcode.map { String($0) }.joined()
                 keychainManager.save(key: KeychainManager.KeychainKeys.passcode.rawValue, value: stringPasscode)
                 print("Saved passcode!")
-                self.delegate.startMainScreen()
+                if wasSetting {
+                    print("dismiss")
+                    NotificationCenter.default.post(name: .dismissPasscode, object: nil)
+                } else {
+                    passcodeState = .inputPasscode
+                    self.clearPasscode(state: .inputPasscode) //очищаем поле и уст статус что будет установка passcode
+                }
+                //self.delegate?.startMainScreen()
             } else {
                 view?.passcode(state: .codeNotMatch)
             }
@@ -107,7 +119,7 @@ class PasscodePresenter: PasscodePresenterProtocol {
         case .success(let code):
             if passcode == code.digits {
                 print("success math code!")
-                self.delegate.startMainScreen()
+                self.delegate?.startMainScreen()
             } else  {
                 clearPasscode(state: .wrongPasscode)
             }

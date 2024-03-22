@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let winScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: winScene)
-//        window?.rootViewController = Builder.getPasscodeController(state: checkIsSetPasscode(), sceneDelegate: self)
-        window?.rootViewController = Builder.createTabBarController()
+        window?.rootViewController = Builder.getPasscodeController(state: checkIsSetPasscode(), sceneDelegate: self, wasSetting: false)
+//        window?.rootViewController = Builder.createTabBarController()
         window?.makeKeyAndVisible()
     }
     ///проверяет при входе состояние пароля

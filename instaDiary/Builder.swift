@@ -8,7 +8,7 @@
 import UIKit
 
 protocol BuilderProtocol {
-    static func getPasscodeController(state: PasscodeState, sceneDelegate: SceneDelegateProtocol) -> UIViewController
+    static func getPasscodeController(state: PasscodeState, sceneDelegate: SceneDelegateProtocol?, wasSetting: Bool) -> UIViewController
     static func createTabBarController() -> UIViewController
     static func createMainScreenController() -> UIViewController
     static func createFavoriteScreenController() -> UIViewController
@@ -17,10 +17,10 @@ protocol BuilderProtocol {
 
 class Builder: BuilderProtocol {
     
-    static func getPasscodeController(state: PasscodeState, sceneDelegate: SceneDelegateProtocol) -> UIViewController {
+    static func getPasscodeController(state: PasscodeState, sceneDelegate: SceneDelegateProtocol?, wasSetting: Bool) -> UIViewController {
         let passcodeView = PasscodeView()
         let keychainManager = KeychainManager()
-        let presenter = PasscodePresenter(view: passcodeView, state: state, keychainManager: keychainManager, delegate: sceneDelegate)
+        let presenter = PasscodePresenter(view: passcodeView, state: state, keychainManager: keychainManager, delegate: sceneDelegate, wasSetting: wasSetting)
         passcodeView.passcodePresenter = presenter
         return passcodeView
     }
@@ -80,5 +80,13 @@ class Builder: BuilderProtocol {
         
         addPostView.presenter = presenter
         return addPostView
+    }
+    
+    static func createSettingsViewController() -> UIViewController {
+        let settingsView = SettingsView()
+        let presenter = SettingsPresenter(view: settingsView)
+        
+        settingsView.presenter = presenter
+        return UINavigationController(rootViewController: settingsView)
     }
 }

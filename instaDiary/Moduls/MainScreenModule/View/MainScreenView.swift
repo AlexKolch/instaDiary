@@ -39,7 +39,12 @@ class MainScreenView: UIViewController {
         $0.setBackgroundImage(UIImage(systemName: "gear"), for: .normal)
         $0.tintColor = .white
         return $0
-    }(UIButton())
+    }(UIButton(primaryAction: settingButtonAction))
+    
+    private lazy var settingButtonAction = UIAction { _ in
+        let settingVC = Builder.createSettingsViewController()
+        self.present(settingVC, animated: true)
+    }
     
    private lazy var collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
@@ -72,6 +77,10 @@ class MainScreenView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : false])
+    }
+    
+    deinit{
+        print("deinit MainVC")
     }
 }
 

@@ -70,6 +70,7 @@ class TabBarView: UITabBarController {
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
+        print("deinit TabBarView")
     }
 }
 

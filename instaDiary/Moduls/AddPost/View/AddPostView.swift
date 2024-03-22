@@ -93,6 +93,7 @@ class AddPostView: UIViewController, AddPostViewProtocol {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        print("deinit AddPostView")
     }
 }
 //MARK: - Composition Layout

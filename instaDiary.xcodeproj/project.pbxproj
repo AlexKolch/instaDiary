@@ -49,6 +49,10 @@
 		FCDEF5E92BAC785F00EE57B7 /* AddPostPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5E82BAC785F00EE57B7 /* AddPostPhotoCell.swift */; };
 		FCDEF5EB2BAC876D00EE57B7 /* AddPostTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5EA2BAC876D00EE57B7 /* AddPostTagCell.swift */; };
 		FCDEF5ED2BACABAA00EE57B7 /* AddPostFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5EC2BACABAA00EE57B7 /* AddPostFieldCell.swift */; };
+		FCDEF5F22BAD63ED00EE57B7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5F12BAD63ED00EE57B7 /* SettingsView.swift */; };
+		FCDEF5F42BAD644B00EE57B7 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5F32BAD644B00EE57B7 /* SettingsPresenter.swift */; };
+		FCDEF5F72BAD6D2800EE57B7 /* SettigItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5F62BAD6D2800EE57B7 /* SettigItems.swift */; };
+		FCDEF5F92BAD6FCB00EE57B7 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5F82BAD6FCB00EE57B7 /* SettingsCell.swift */; };
 		FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */; };
 		FCFAE7A42BA6C764005C8A9B /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */; };
 		FCFAE7A62BA85558005C8A9B /* NavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */; };
@@ -98,6 +102,10 @@
 		FCDEF5E82BAC785F00EE57B7 /* AddPostPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostPhotoCell.swift; sourceTree = "<group>"; };
 		FCDEF5EA2BAC876D00EE57B7 /* AddPostTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostTagCell.swift; sourceTree = "<group>"; };
 		FCDEF5EC2BACABAA00EE57B7 /* AddPostFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostFieldCell.swift; sourceTree = "<group>"; };
+		FCDEF5F12BAD63ED00EE57B7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FCDEF5F32BAD644B00EE57B7 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		FCDEF5F62BAD6D2800EE57B7 /* SettigItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettigItems.swift; sourceTree = "<group>"; };
+		FCDEF5F82BAD6FCB00EE57B7 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		FCFAE79F2BA6C69F005C8A9B /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		FCFAE7A32BA6C764005C8A9B /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeader.swift; sourceTree = "<group>"; };
@@ -202,6 +210,7 @@
 		FC6822A62B94987F00562C78 /* Moduls */ = {
 			isa = PBXGroup;
 			children = (
+				FCDEF5EE2BAD635B00EE57B7 /* SettingsModule */,
 				FCDEF5DF2BAC5C7400EE57B7 /* AddPost */,
 				FCDEF5CF2BAAA81100EE57B7 /* PhotoViewModule */,
 				FCFAE79E2BA6C67F005C8A9B /* DetailsModule */,
@@ -240,8 +249,8 @@
 				FC3FCFC32B9CD7DF0020B3F3 /* Date + Ext.swift */,
 				FC3FCFC52B9DBD4F0020B3F3 /* UIApplication + Ext.swift */,
 				FCDEF5CB2BA9969800EE57B7 /* UITextField + ext.swift */,
-				FCDEF5D62BAAF0E400EE57B7 /* NSNotification.Name.ext.swift */,
 				FCDEF5DD2BAC3B2F00EE57B7 /* UIImageView + ext.swift */,
+				FCDEF5D62BAAF0E400EE57B7 /* NSNotification.Name.ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -405,6 +414,41 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		FCDEF5EE2BAD635B00EE57B7 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				FCDEF5F52BAD6D1800EE57B7 /* Model */,
+				FCDEF5EF2BAD636B00EE57B7 /* Presenter */,
+				FCDEF5F02BAD637300EE57B7 /* View */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		FCDEF5EF2BAD636B00EE57B7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FCDEF5F32BAD644B00EE57B7 /* SettingsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FCDEF5F02BAD637300EE57B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FCDEF5F12BAD63ED00EE57B7 /* SettingsView.swift */,
+				FCDEF5F82BAD6FCB00EE57B7 /* SettingsCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FCDEF5F52BAD6D1800EE57B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCDEF5F62BAD6D2800EE57B7 /* SettigItems.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FCFAE79E2BA6C67F005C8A9B /* DetailsModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,18 +559,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCDEF5F92BAD6FCB00EE57B7 /* SettingsCell.swift in Sources */,
 				FC6822942B94979D00562C78 /* PasscodeView.swift in Sources */,
+				FCDEF5F72BAD6D2800EE57B7 /* SettigItems.swift in Sources */,
 				FCDEF5CE2BA99DB600EE57B7 /* DetailsMapCell.swift in Sources */,
 				FC9BBF3D2B9B4689002C3EAA /* TabBarPresenter.swift in Sources */,
 				FCDEF5C62BA9874000EE57B7 /* DetailsPhotoCell.swift in Sources */,
 				FCDEF5E42BAC5CC400EE57B7 /* AddPostView.swift in Sources */,
 				FCDEF5CA2BA9955500EE57B7 /* DetailsAddCommentCell.swift in Sources */,
 				FC3FCFC22B9CC7770020B3F3 /* PostItem.swift in Sources */,
+				FCDEF5F42BAD644B00EE57B7 /* SettingsPresenter.swift in Sources */,
 				FCDEF5D52BAAB3B000EE57B7 /* PhotoViewPresenter.swift in Sources */,
 				FC6822902B94979D00562C78 /* AppDelegate.swift in Sources */,
 				FCDEF5DC2BABFEEE00EE57B7 /* CameraService.swift in Sources */,
 				FCDEF5E92BAC785F00EE57B7 /* AddPostPhotoCell.swift in Sources */,
 				FC3FCFC02B9CC5090020B3F3 /* MainPostHeader.swift in Sources */,
+				FCDEF5F22BAD63ED00EE57B7 /* SettingsView.swift in Sources */,
 				FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */,
 				FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */,
 				FCDEF5E62BAC5D7400EE57B7 /* AddPostPresenter.swift in Sources */,
