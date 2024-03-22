@@ -39,10 +39,10 @@ class TabBarView: UITabBarController {
         view.addSubview(tabBarView)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        selectedIndex = 0 //Для показа favorite view по умолчанию
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        selectedIndex = 0
+//    }
 
     lazy var selectItem = UIAction { [weak self] sender in
         guard

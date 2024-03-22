@@ -90,6 +90,10 @@ class AddPostView: UIViewController, AddPostViewProtocol {
             collectionView.contentInset.bottom = 100
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 //MARK: - Composition Layout
 extension AddPostView {
