@@ -68,6 +68,9 @@ class TabBarView: UITabBarController {
             }
         }
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension TabBarView {

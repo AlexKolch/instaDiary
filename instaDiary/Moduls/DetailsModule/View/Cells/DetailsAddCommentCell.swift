@@ -21,7 +21,8 @@ class DetailsAddCommentCell: UICollectionViewCell {
     lazy var textField: UITextField = {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = bounds.height/2
-        $0.placeholder = "Добавьте комментарий"
+//        $0.placeholder = "Добавьте комментарий"
+        $0.attributedPlaceholder = NSAttributedString(string: "Добавьте комментарий", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         $0.setLeftOffset()
         return $0
     }(UITextField(frame: bounds, primaryAction: action))

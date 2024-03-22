@@ -8,7 +8,7 @@
 import UIKit
 
 enum NavigationHeaderType {
-    case back, close
+    case detailsView, addPostView
 }
 
 class NavigationHeader {
@@ -49,11 +49,11 @@ class NavigationHeader {
     ///получить NavigationHeader в зависимости от типа хиддера
     func getNavigationHeader(type: NavigationHeaderType) -> UIView {
         switch type {
-        case .back:
+        case .detailsView:
             templateView.addSubview(backButton)
             templateView.addSubview(menuButton)
-        case .close:
-            templateView.addSubview(closeButton)
+        case .addPostView:
+            templateView.addSubview(backButton)
         }
         return templateView
     }

@@ -16,6 +16,7 @@ class DetailsView: UIViewController {
     var presenter: DetailsPresenterProtocol!
     var photoView: PhotoView! //объявили здесь, чтобы обнулять ссылку при уничтожении photoView контроллера (232 строчка)
     
+    //Здесь создается шапка для topMenuView
     private let menuViewHeight = UIApplication.topSafeArea + 50
     
     private lazy var topMenuView: UIView = {
@@ -23,6 +24,7 @@ class DetailsView: UIViewController {
         $0.backgroundColor = .appMain
         return $0
     }(UIView())
+    //
     
     lazy var backAction = UIAction { [weak self] _ in
         self?.navigationController?.popViewController(animated: true)
@@ -65,13 +67,13 @@ class DetailsView: UIViewController {
         navigationItem.setHidesBackButton(true, animated: true) //тогда не будет работать жест смахивания страницы(можно добваить свой жест)
         navigationController?.navigationBar.isHidden = true
         
-        NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : true])
+        NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : true]) //отправили нотификацию
     }
     
     //MARK: - setup NavBar & Layout
     ///устанавливаем нужного типа navigationHeader
     private func setupNavHeader() {
-        let navView = navigationHeader.getNavigationHeader(type: .back)
+        let navView = navigationHeader.getNavigationHeader(type: .detailsView)
         navView.frame.origin.y = UIApplication.topSafeArea
         view.addSubview(navView)
     }
