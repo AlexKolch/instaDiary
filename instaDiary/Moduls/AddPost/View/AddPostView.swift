@@ -8,12 +8,13 @@
 import UIKit
 
 protocol AddPostViewProtocol: AnyObject {
-    
+    var delegate: CameraViewDelegate? {get set}
 }
 
 class AddPostView: UIViewController, AddPostViewProtocol {
     
     var presenter: AddPostPresenterProtocol!
+    weak var delegate: CameraViewDelegate?
     
     private let menuViewHeight = UIApplication.topSafeArea + 50
     
@@ -24,7 +25,7 @@ class AddPostView: UIViewController, AddPostViewProtocol {
     }(UIView())
     
     lazy var backAction = UIAction { [weak self] _ in
-      print("back")
+        self?.navigationController?.popViewController(animated: true)
     }
     
     lazy var navigationHeader: NavigationHeader = {
@@ -63,7 +64,7 @@ class AddPostView: UIViewController, AddPostViewProtocol {
         view.addSubview(topMenuView)
         view.addSubview(saveButton)
         getHeader()
-        
+    
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
         ///Натификация на появление клавиатуры
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -98,6 +99,7 @@ class AddPostView: UIViewController, AddPostViewProtocol {
 }
 //MARK: - Composition Layout
 extension AddPostView {
+    
    private func getCompositionLayout() -> UICollectionViewCompositionalLayout {
        UICollectionViewCompositionalLayout { section, _ in
            switch section {
@@ -144,7 +146,7 @@ extension AddPostView {
         return section
     }
 }
-//MARK: - Delegate
+//MARK: - DataSource
 extension AddPostView: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -168,6 +170,13 @@ extension AddPostView: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddPostPhotoCell.reuseId, for: indexPath) as! AddPostPhotoCell
             let image = presenter.photos[indexPath.item]
             cell.configureCell(image: image)
+            
+            cell.completion = { [weak self] in
+                self?.delegate?.deleteImage(for: indexPath.row)
+                self?.presenter.photos.remove(at: indexPath.row)
+                self?.collectionView.deleteItems(at: [indexPath])
+            }
+            
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddPostTagCell.reuseId, for: indexPath) as! AddPostTagCell

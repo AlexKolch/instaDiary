@@ -8,6 +8,10 @@
 import UIKit
 import AVFoundation
 
+protocol CameraViewDelegate: AnyObject {
+    func deleteImage(for index: Int)
+}
+
 protocol CameraViewProtocol: AnyObject {
 }
 
@@ -56,13 +60,23 @@ class CameraView: UIViewController, CameraViewProtocol {
     private lazy var nextBtn: UIButton = {
         $0.setTitle("Далее", for: .normal)
         $0.setTitleColor(.white, for: .normal)
+        $0.layer.opacity = 0.6
+        $0.isEnabled = false
         $0.backgroundColor = .black
         $0.layer.cornerRadius = 17.5
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.frame.size = CGSize(width: 100, height: 35)
         $0.frame.origin = CGPoint(x: shotBtn.frame.origin.x + 90, y: shotBtn.frame.origin.y + 12.5)
         return $0
-    }(UIButton())
+    }(UIButton(primaryAction: nextBtnAction))
+    
+    lazy var nextBtnAction = UIAction { [weak self] _ in
+        guard let self = self else {return}
+        if let addPostVC = Builder.createAddPostViewController(photos: self.presenter.photos) as? AddPostView {
+            addPostVC.delegate = self
+            navigationController?.pushViewController(addPostVC, animated: true)
+        }
+    }
     
 //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -116,7 +130,7 @@ class CameraView: UIViewController, CameraViewProtocol {
         view.layer.addSublayer(previewLayer)
     }
 }
-//MARK: - extension
+//MARK: - extension AVCapturePhotoCaptureDelegate
 extension CameraView: AVCapturePhotoCaptureDelegate {
     ///Срабатывает когда нажали сделать снимок
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
@@ -127,11 +141,15 @@ extension CameraView: AVCapturePhotoCaptureDelegate {
         guard let photoData = photo.fileDataRepresentation() else { return }
         if let image = UIImage(data: photoData) {
             presenter.photos.append(image)
+            
+            nextBtn.layer.opacity = 1.0
+            nextBtn.isEnabled = true
+            
             self.shotsCollectionView.reloadData()
         }
     } 
 }
-
+//MARK: - extension UICollectionViewDataSource
 extension CameraView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -147,3 +165,18 @@ extension CameraView: UICollectionViewDataSource {
     }
     
 }
+
+//MARK: - Delegate
+extension CameraView: CameraViewDelegate {
+    func deleteImage(for index: Int) {
+        presenter.deleteImage(for: index)
+        
+        if presenter.photos.count == 0 {
+            nextBtn.layer.opacity = 0.6
+            nextBtn.isEnabled = false
+        }
+        
+        shotsCollectionView.reloadData()
+    }
+}
+

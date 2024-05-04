@@ -10,6 +10,8 @@ import UIKit
 class AddPostPhotoCell: UICollectionViewCell {
     static let reuseId = "AddPostPhotoCell"
     
+    var completion: (() -> ())? //блок кода при нажатии на кнопку удалить
+    
     private lazy var cellImage: UIImageView = {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
@@ -22,8 +24,8 @@ class AddPostPhotoCell: UICollectionViewCell {
         return $0
     }(UIButton(frame: CGRect(x: cellImage.frame.width - 30, y: 30, width: 15, height: 15), primaryAction: removeBtnAction))
     
-    private lazy var removeBtnAction = UIAction { _ in
-        print("remove")
+    private lazy var removeBtnAction = UIAction { [weak self] _ in
+        self?.completion?()
     }
     
     override init(frame: CGRect) {
