@@ -53,7 +53,7 @@ class FavoriteCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(item: PostItem) {
+    func configureCell(item: PostItem1) {
         postImage.image = UIImage(named: item.photos.first!)
         dateLabel.text = item.date.formattDate() //получили дату форматированную в текст
     }

@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		FC3FCFBE2B9CC4A90020B3F3 /* MainPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFBD2B9CC4A90020B3F3 /* MainPostCell.swift */; };
 		FC3FCFC02B9CC5090020B3F3 /* MainPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFBF2B9CC5090020B3F3 /* MainPostHeader.swift */; };
-		FC3FCFC22B9CC7770020B3F3 /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC12B9CC7770020B3F3 /* PostItem.swift */; };
+		FC3FCFC22B9CC7770020B3F3 /* PostItem1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC12B9CC7770020B3F3 /* PostItem1.swift */; };
 		FC3FCFC42B9CD7DF0020B3F3 /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC32B9CD7DF0020B3F3 /* Date + Ext.swift */; };
 		FC3FCFC62B9DBD4F0020B3F3 /* UIApplication + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC52B9DBD4F0020B3F3 /* UIApplication + Ext.swift */; };
 		FC3FCFC92B9DDE940020B3F3 /* TagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC82B9DDE940020B3F3 /* TagCollectionView.swift */; };
 		FC3FCFCB2B9DE3180020B3F3 /* TagCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFCA2B9DE3180020B3F3 /* TagCollectionVCell.swift */; };
 		FC3FCFD32BA5DD6E0020B3F3 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFD22BA5DD6E0020B3F3 /* FavoritePresenter.swift */; };
 		FC3FCFD52BA5F35A0020B3F3 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFD42BA5F35A0020B3F3 /* FavoriteCell.swift */; };
+		FC54F6352BEF9ECA00918D70 /* instaDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC54F6332BEF9ECA00918D70 /* instaDiary.xcdatamodeld */; };
 		FC64D52C2B99C09100FF0E36 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64D52B2B99C09100FF0E36 /* KeychainManager.swift */; };
 		FC64D52F2B99CF0900FF0E36 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = FC64D52E2B99CF0900FF0E36 /* KeychainAccess */; };
 		FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */; };
@@ -61,13 +62,14 @@
 /* Begin PBXFileReference section */
 		FC3FCFBD2B9CC4A90020B3F3 /* MainPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostCell.swift; sourceTree = "<group>"; };
 		FC3FCFBF2B9CC5090020B3F3 /* MainPostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostHeader.swift; sourceTree = "<group>"; };
-		FC3FCFC12B9CC7770020B3F3 /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
+		FC3FCFC12B9CC7770020B3F3 /* PostItem1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem1.swift; sourceTree = "<group>"; };
 		FC3FCFC32B9CD7DF0020B3F3 /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
 		FC3FCFC52B9DBD4F0020B3F3 /* UIApplication + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Ext.swift"; sourceTree = "<group>"; };
 		FC3FCFC82B9DDE940020B3F3 /* TagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionView.swift; sourceTree = "<group>"; };
 		FC3FCFCA2B9DE3180020B3F3 /* TagCollectionVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionVCell.swift; sourceTree = "<group>"; };
 		FC3FCFD22BA5DD6E0020B3F3 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		FC3FCFD42BA5F35A0020B3F3 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		FC54F6342BEF9ECA00918D70 /* instaDiary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = instaDiary.xcdatamodel; sourceTree = "<group>"; };
 		FC64D52B2B99C09100FF0E36 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringProtocol + Ext.swift"; sourceTree = "<group>"; };
 		FC68228C2B94979D00562C78 /* instaDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instaDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		FC54F6322BEF9E8700918D70 /* StorageManager */ = {
+			isa = PBXGroup;
+			children = (
+				FC54F6332BEF9ECA00918D70 /* instaDiary.xcdatamodeld */,
+			);
+			path = StorageManager;
+			sourceTree = "<group>";
+		};
 		FC6822832B94979D00562C78 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +179,7 @@
 		FC68228E2B94979D00562C78 /* instaDiary */ = {
 			isa = PBXGroup;
 			children = (
+				FC54F6322BEF9E8700918D70 /* StorageManager */,
 				FC3FCFC72B9DDE7F0020B3F3 /* Helpers */,
 				FC6822AD2B94A60300562C78 /* Extension */,
 				FC6822AA2B9499DE00562C78 /* Common */,
@@ -284,7 +295,7 @@
 		FC9BBF2F2B9B3976002C3EAA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FC3FCFC12B9CC7770020B3F3 /* PostItem.swift */,
+				FC3FCFC12B9CC7770020B3F3 /* PostItem1.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -567,7 +578,7 @@
 				FCDEF5C62BA9874000EE57B7 /* DetailsPhotoCell.swift in Sources */,
 				FCDEF5E42BAC5CC400EE57B7 /* AddPostView.swift in Sources */,
 				FCDEF5CA2BA9955500EE57B7 /* DetailsAddCommentCell.swift in Sources */,
-				FC3FCFC22B9CC7770020B3F3 /* PostItem.swift in Sources */,
+				FC3FCFC22B9CC7770020B3F3 /* PostItem1.swift in Sources */,
 				FCDEF5F42BAD644B00EE57B7 /* SettingsPresenter.swift in Sources */,
 				FCDEF5D52BAAB3B000EE57B7 /* PhotoViewPresenter.swift in Sources */,
 				FC6822902B94979D00562C78 /* AppDelegate.swift in Sources */,
@@ -589,6 +600,7 @@
 				FCDEF5D32BAAA92400EE57B7 /* PhotoView.swift in Sources */,
 				FC6822922B94979D00562C78 /* SceneDelegate.swift in Sources */,
 				FC6822A92B9498A700562C78 /* Builder.swift in Sources */,
+				FC54F6352BEF9ECA00918D70 /* instaDiary.xcdatamodeld in Sources */,
 				FC9BBF392B9B3F50002C3EAA /* CameraView.swift in Sources */,
 				FCDEF5EB2BAC876D00EE57B7 /* AddPostTagCell.swift in Sources */,
 				FC3FCFC62B9DBD4F0020B3F3 /* UIApplication + Ext.swift in Sources */,
@@ -844,6 +856,19 @@
 			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		FC54F6332BEF9ECA00918D70 /* instaDiary.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FC54F6342BEF9ECA00918D70 /* instaDiary.xcdatamodel */,
+			);
+			currentVersion = FC54F6342BEF9ECA00918D70 /* instaDiary.xcdatamodel */;
+			path = instaDiary.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FC6822842B94979D00562C78 /* Project object */;
 }

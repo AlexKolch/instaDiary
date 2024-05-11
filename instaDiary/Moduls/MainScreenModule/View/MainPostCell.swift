@@ -52,7 +52,7 @@ class MainPostCell: UICollectionViewCell {
         postDesciptionLabel.removeFromSuperview()
     }
     
-    func configureCell(item: PostItem) {
+    func configureCell(item: PostItem1) {
         tags = item.tags ?? []
         
         let tagCollection: TagCollectionViewProtocol = TagCollectionView(dataSource: self)
@@ -62,7 +62,7 @@ class MainPostCell: UICollectionViewCell {
         
         photoCountLabel = getCellLabel(text: "\(item.photos.count) фото")
         commentCountLabel = getCellLabel(text: "\(item.comments?.count ?? 0) комментарий")
-        postDesciptionLabel = getCellLabel(text: item.description ?? "")
+        postDesciptionLabel = getCellLabel(text: item.postDescription ?? "")
         
         [countLabelsStack, tagCollectionView, postDesciptionLabel].forEach { addSubview($0) }
         
