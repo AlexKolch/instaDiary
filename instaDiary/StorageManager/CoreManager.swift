@@ -9,9 +9,9 @@ import Foundation
 import CoreData
 
 class CoreManager {
-    static let shared = CoreManager(); private init() {}
+    static let shared = CoreManager(); private init() { fetchPosts() }
     
-    var allPosts: [PostData] = []
+    var allPosts: [PostData] = [] //данные постов
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "instaDiary")
@@ -35,19 +35,20 @@ class CoreManager {
         }
     }
     
-    ///получение записей из CoreData
+    ///получение постов из CoreData
     func fetchPosts() {
         let request = PostData.fetchRequest() //request для получения постов
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)] //сортировка по новым поcтам
         
         do {
             let posts = try persistentContainer.viewContext.fetch(request) //получаем данные из CoreData
-            allPosts = posts
+            allPosts = posts //присваиваем полученные данные
         } catch {
             print(error.localizedDescription)
         }
     }
     
+    ///Сохранение поста в  CoreData
     func save(post: PostItem) {
         let calendar = Calendar.current
         let currentDate = Date()
@@ -73,7 +74,7 @@ class CoreManager {
             }
             
             saveContext()
-            fetchPosts() //обновляем данные
+            fetchPosts() //получаем обновленные данные
         } catch {
             print(error.localizedDescription)
         }

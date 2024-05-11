@@ -16,15 +16,16 @@ protocol MainScreenPresenterProtocol: AnyObject {
 class MainScreenPresenter: MainScreenPresenterProtocol {
     
     private weak var view: MainScreenViewProtocol?
-    var posts: [PostData]?
+    private let coreManager = CoreManager.shared
+    var posts: [PostData]? //посты
     
     required init(view: MainScreenViewProtocol) {
         self.view = view
         getPosts()
     }
-    
+    ///получение постов из CoreData
     func getPosts() {
-//        posts = PostDate1.getMockData()
+        posts = coreManager.allPosts
         view?.showPost()
     }
     

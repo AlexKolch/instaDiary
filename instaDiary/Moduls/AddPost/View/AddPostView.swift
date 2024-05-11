@@ -52,8 +52,9 @@ class AddPostView: UIViewController, AddPostViewProtocol {
         return $0
     }(UIButton(frame: CGRect(x: 30, y: view.bounds.height - 98, width: view.bounds.width - 60, height: 55), primaryAction: saveBtnAction))
     
-    private let saveBtnAction = UIAction { _ in
-        print("save")
+    private lazy var saveBtnAction = UIAction { [weak self] _ in
+        self?.presenter.savePost()
+        print("post saved")
     }
     
 //MARK: - viewDidLoad
