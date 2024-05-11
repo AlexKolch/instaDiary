@@ -17,6 +17,10 @@
 		FC3FCFD32BA5DD6E0020B3F3 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFD22BA5DD6E0020B3F3 /* FavoritePresenter.swift */; };
 		FC3FCFD52BA5F35A0020B3F3 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFD42BA5F35A0020B3F3 /* FavoriteCell.swift */; };
 		FC54F6352BEF9ECA00918D70 /* instaDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC54F6332BEF9ECA00918D70 /* instaDiary.xcdatamodeld */; };
+		FC54F63C2BEFA49C00918D70 /* PostItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54F6362BEFA49C00918D70 /* PostItem+CoreDataClass.swift */; };
+		FC54F63E2BEFA49C00918D70 /* PostData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54F6382BEFA49C00918D70 /* PostData+CoreDataClass.swift */; };
+		FC54F6402BEFA49C00918D70 /* Comment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54F63A2BEFA49C00918D70 /* Comment+CoreDataClass.swift */; };
+		FC54F6442BEFA58600918D70 /* CoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54F6432BEFA58600918D70 /* CoreManager.swift */; };
 		FC64D52C2B99C09100FF0E36 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64D52B2B99C09100FF0E36 /* KeychainManager.swift */; };
 		FC64D52F2B99CF0900FF0E36 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = FC64D52E2B99CF0900FF0E36 /* KeychainAccess */; };
 		FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */; };
@@ -70,6 +74,10 @@
 		FC3FCFD22BA5DD6E0020B3F3 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		FC3FCFD42BA5F35A0020B3F3 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		FC54F6342BEF9ECA00918D70 /* instaDiary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = instaDiary.xcdatamodel; sourceTree = "<group>"; };
+		FC54F6362BEFA49C00918D70 /* PostItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FC54F6382BEFA49C00918D70 /* PostData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FC54F63A2BEFA49C00918D70 /* Comment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FC54F6432BEFA58600918D70 /* CoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreManager.swift; sourceTree = "<group>"; };
 		FC64D52B2B99C09100FF0E36 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		FC64D5302B99EB4A00FF0E36 /* StringProtocol + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringProtocol + Ext.swift"; sourceTree = "<group>"; };
 		FC68228C2B94979D00562C78 /* instaDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instaDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,9 +163,21 @@
 		FC54F6322BEF9E8700918D70 /* StorageManager */ = {
 			isa = PBXGroup;
 			children = (
+				FC54F6422BEFA55600918D70 /* Models */,
 				FC54F6332BEF9ECA00918D70 /* instaDiary.xcdatamodeld */,
+				FC54F6432BEFA58600918D70 /* CoreManager.swift */,
 			);
 			path = StorageManager;
+			sourceTree = "<group>";
+		};
+		FC54F6422BEFA55600918D70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC54F6362BEFA49C00918D70 /* PostItem+CoreDataClass.swift */,
+				FC54F6382BEFA49C00918D70 /* PostData+CoreDataClass.swift */,
+				FC54F63A2BEFA49C00918D70 /* Comment+CoreDataClass.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FC6822832B94979D00562C78 = {
@@ -585,15 +605,19 @@
 				FCDEF5DC2BABFEEE00EE57B7 /* CameraService.swift in Sources */,
 				FCDEF5E92BAC785F00EE57B7 /* AddPostPhotoCell.swift in Sources */,
 				FC3FCFC02B9CC5090020B3F3 /* MainPostHeader.swift in Sources */,
+				FC54F6402BEFA49C00918D70 /* Comment+CoreDataClass.swift in Sources */,
 				FCDEF5F22BAD63ED00EE57B7 /* SettingsView.swift in Sources */,
+				FC54F63C2BEFA49C00918D70 /* PostItem+CoreDataClass.swift in Sources */,
 				FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */,
 				FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */,
 				FCDEF5E62BAC5D7400EE57B7 /* AddPostPresenter.swift in Sources */,
+				FC54F63E2BEFA49C00918D70 /* PostData+CoreDataClass.swift in Sources */,
 				FCFAE7A42BA6C764005C8A9B /* DetailsPresenter.swift in Sources */,
 				FC64D52C2B99C09100FF0E36 /* KeychainManager.swift in Sources */,
 				FCDEF5DE2BAC3B2F00EE57B7 /* UIImageView + ext.swift in Sources */,
 				FCDEF5CC2BA9969800EE57B7 /* UITextField + ext.swift in Sources */,
 				FCDEF5D72BAAF0E400EE57B7 /* NSNotification.Name.ext.swift in Sources */,
+				FC54F6442BEFA58600918D70 /* CoreManager.swift in Sources */,
 				FC3FCFC42B9CD7DF0020B3F3 /* Date + Ext.swift in Sources */,
 				FC9BBF352B9B3EB5002C3EAA /* MainScreenView.swift in Sources */,
 				FCDEF5ED2BACABAA00EE57B7 /* AddPostFieldCell.swift in Sources */,
