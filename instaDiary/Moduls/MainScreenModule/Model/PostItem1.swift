@@ -8,15 +8,15 @@
 import Foundation
 import CoreLocation
 
-class PostDate1: Identifiable {
-    let id = UUID().uuidString
-    let items: [PostItem1]
-    let date: Date
-    
-    init(items: [PostItem1], date: Date) {
-        self.items = items
-        self.date = date
-    }
+//class PostDate1: Identifiable {
+//    let id = UUID().uuidString
+//    let items: [PostItem]
+//    let date: Date
+//    
+//    init(items: [PostItem], date: Date) {
+//        self.items = items
+//        self.date = date
+//    }
     
 //    static func getMockData() -> [PostDate] {
 //        //Секции постов разделены по дням
@@ -38,27 +38,27 @@ class PostDate1: Identifiable {
 //            ], date: Date().addingTimeInterval(-172800))
 //        ]
 //    }
-}
+//}
 
-class PostItem1: Identifiable {
-    let id = UUID().uuidString
-    let photos: [String]
-    let comments: [Comment1]?
-    let tags: [String]?
-    let postDescription: String?
-    let isFavorite: Bool
-    let date: Date
-    let location: CLLocationCoordinate2D?
-    
-    init(photos: [String], comments: [Comment1]?, tags: [String]?, description: String?, isFavorite: Bool = false, date: Date, location: CLLocationCoordinate2D? = nil) {
-        self.photos = photos
-        self.comments = comments
-        self.tags = tags
-        self.postDescription = description
-        self.isFavorite = isFavorite
-        self.date = date
-        self.location = location
-    }
+//class PostItem1: Identifiable {
+//    let id = UUID().uuidString
+//    let photos: [String]
+//    let comments: [Comment1]?
+//    let tags: [String]?
+//    let postDescription: String?
+//    let isFavorite: Bool
+//    let date: Date
+//    let location: CLLocationCoordinate2D?
+//    
+//    init(photos: [String], comments: [Comment1]?, tags: [String]?, description: String?, isFavorite: Bool = false, date: Date, location: CLLocationCoordinate2D? = nil) {
+//        self.photos = photos
+//        self.comments = comments
+//        self.tags = tags
+//        self.postDescription = description
+//        self.isFavorite = isFavorite
+//        self.date = date
+//        self.location = location
+//    }
     
 //    static func getPostItem() -> [PostItem] {
 //        [
@@ -80,7 +80,7 @@ class PostItem1: Identifiable {
 //            
 //        ]
 //    }
-}
+//}
 
 class Comment1: Identifiable {
     let id = UUID().uuidString

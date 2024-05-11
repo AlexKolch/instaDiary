@@ -35,7 +35,7 @@ class DetailsView: UIViewController {
     
     ///созданный navigationHeader
     lazy var navigationHeader: NavigationHeader = {
-        NavigationHeader(backAction: backAction, menuAction: menuAction, date: presenter.postItem.date)
+        NavigationHeader(backAction: backAction, menuAction: menuAction, date: presenter.postItem.date ?? Date())
     }()
     
     lazy var collectionView: UICollectionView = {
@@ -169,7 +169,7 @@ extension DetailsView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return presenter.postItem.photos.count
+            return presenter.postItem.photos?.count ?? 0
         case 1:
             return presenter.postItem.tags?.count ?? 0
         case 3:
@@ -185,7 +185,7 @@ extension DetailsView: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsPhotoCell.reuseId, for: indexPath) as! DetailsPhotoCell
-            cell.configure(image: item.photos[indexPath.item])
+            cell.configure(image: item.photos?[indexPath.item] ?? "photo")
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionVCell.reuseId, for: indexPath) as! TagCollectionVCell
@@ -195,10 +195,11 @@ extension DetailsView: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailDescriptionCell.reuseId, for: indexPath) as! DetailDescriptionCell
             
             if indexPath.section == 2 {
-                cell.configureCell(date: nil, text: item.description ?? "")
+                cell.configureCell(date: nil, text: item.postDescription ?? "")
             } else {
-                let comment = item.comments?[indexPath.item]
-                cell.configureCell(date: comment?.date, text: comment?.comment ?? "")
+                if let arrayComments = item.comments?.allObjects as? [Comment] {
+                    cell.configureCell(date: arrayComments[indexPath.item].date, text: arrayComments[indexPath.item].comment ?? "")
+                }
             }
             return cell
         case 4:
@@ -209,7 +210,7 @@ extension DetailsView: UICollectionViewDataSource {
             return cell
         case 5:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsMapCell.reuseId, for: indexPath) as! DetailsMapCell
-            cell.configureCell(coordinate: item.location)
+//            cell.configureCell(coordinate: item.location) //локацию сделаем позже
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
@@ -222,9 +223,9 @@ extension DetailsView: UICollectionViewDataSource {
 extension DetailsView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let itemPhoto = presenter.postItem.photos[indexPath.item] //получили конкретную нажатую фотку
+            let itemPhoto = presenter.postItem.photos?[indexPath.item] //получили конкретную нажатую фотку
             
-            photoView = Builder.createPhotoViewController(image: UIImage(named: itemPhoto)) as? PhotoView
+            photoView = Builder.createPhotoViewController(image: UIImage(named: itemPhoto ?? "photo")) as? PhotoView
             
             if photoView != nil {
                 addChild(photoView!)

@@ -92,15 +92,15 @@ extension MainScreenView: UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        presenter.posts?[section].items.count ?? 0
+        presenter.posts?[section].items?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPostCell.reuseId, for: indexPath) as? MainPostCell
         else { return UICollectionViewCell() }
         
-        if let item = presenter.posts?[indexPath.section].items[indexPath.item] {
-            cell.configureCell(item: item)
+        if let items = presenter.posts?[indexPath.section].items?.allObjects as? [PostItem] {
+            cell.configureCell(item: items[indexPath.item])
         }
         
         return cell
@@ -109,7 +109,7 @@ extension MainScreenView: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MainPostHeader.reuseId, for: indexPath) as! MainPostHeader
         
-        guard let dateString = presenter.posts?[indexPath.section].date.getDateDiference() else { return header } //получаем дату в стринге
+        guard let dateString = presenter.posts?[indexPath.section].date?.getDateDiference() else { return header } //получаем дату в стринге
 
         header.setTitle(text: dateString)
         

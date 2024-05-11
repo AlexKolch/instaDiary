@@ -9,14 +9,14 @@ import UIKit
 
 protocol FavoritePresenterProtocol: AnyObject {
     init(view: FavoriteViewProtocol)
-    var posts: [PostItem1]? {get set}
+    var posts: [PostItem]? {get set}
     func getPosts()
 }
 
 class FavoritePresenter: FavoritePresenterProtocol {
     
     private weak var view: FavoriteViewProtocol?
-    var posts: [PostItem1]?
+    var posts: [PostItem]?
     
     required init(view: FavoriteViewProtocol) {
         self.view = view
@@ -25,7 +25,7 @@ class FavoritePresenter: FavoritePresenterProtocol {
     
     
     func getPosts() {
-        self.posts = PostItem1.getPostItem()
+//        self.posts = PostItem.getPostItem()
         view?.showPosts()
     }
     

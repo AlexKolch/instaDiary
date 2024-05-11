@@ -59,7 +59,7 @@ class Builder: BuilderProtocol {
         return UINavigationController(rootViewController: cameraView) 
     }
     
-    static func createDetailsController(item: PostItem1) -> UIViewController {
+    static func createDetailsController(item: PostItem) -> UIViewController {
         let detailsView = DetailsView()
         let presenter = DetailsPresenter(view: detailsView, item: item)
         
