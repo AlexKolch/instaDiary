@@ -9,6 +9,9 @@ import UIKit
 
 class AddPostTagCell: UICollectionViewCell {
     static let reuseId = "AddPostTagCell"
+    
+    private var tagIndex = 0
+    var deletedCompletion: ( (Int) -> Void )? //передаем сюда индекс удаленного тега
     ///вьюха на всю ячейку
     private lazy var tagView: UIView = {
         .configure(view: $0) { view in
@@ -24,6 +27,7 @@ class AddPostTagCell: UICollectionViewCell {
         return $0
     }(UILabel())
     
+    
     private lazy var removeBtn: UIButton = {
         .configure(view: $0) { btn in
             btn.setBackgroundImage(.closeIcon, for: .normal)
@@ -32,9 +36,12 @@ class AddPostTagCell: UICollectionViewCell {
         }
     }(UIButton(primaryAction: removeAction))
     
-    private let removeAction = UIAction { _ in
-        print("remove")
+    private lazy var removeAction = UIAction { [weak self] _ in
+        guard let self else {return}
+        print(self.tagIndex) //по этому индексу удаляем тег
+        deletedCompletion?(tagIndex) //передаем тег выше в AddPostView
     }
+    
     
     private lazy var tagStack: UIStackView = {
         .configure(view: $0) { stack in
@@ -44,6 +51,7 @@ class AddPostTagCell: UICollectionViewCell {
             stack.addArrangedSubview(self.removeBtn)
         }
     }(UIStackView())
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,8 +63,9 @@ class AddPostTagCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setTag(text: String) {
+    func setTag(text: String, index: Int) {
         self.tagLabel.text = text
+        self.tagIndex = index
     }
     
     private func setConstraints() {

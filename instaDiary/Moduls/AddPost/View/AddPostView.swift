@@ -182,10 +182,24 @@ extension AddPostView: UICollectionViewDataSource {
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddPostTagCell.reuseId, for: indexPath) as! AddPostTagCell
             let tag = presenter.tags[indexPath.item]
-            cell.setTag(text: tag)
+            
+            cell.setTag(text: tag, index: indexPath.item)
+            cell.deletedCompletion = { [weak self] tag in
+                self?.presenter.tags.remove(at: tag) //удаляем переданный тег по индексу в массиве
+                collectionView.reloadSections(.init(integer: 1))
+            }
             return cell
+            
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddPostFieldCell.reuseId, for: indexPath) as! AddPostFieldCell
+            
+            cell.tagCompletion = { [weak self] tag in
+                guard let self else {return}
+                guard let tag else {return}
+                
+                self.presenter.tags.append(tag)
+                collectionView.reloadSections(.init(integer: 1))
+            }
             
             return cell
         }
