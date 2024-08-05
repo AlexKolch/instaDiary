@@ -18,24 +18,33 @@ protocol AddPostPresenterProtocol: AnyObject {
 class AddPostPresenter: AddPostPresenterProtocol {
     
     private weak var view: AddPostViewProtocol?
+    private var storageManager = StoreManager.shared
     private let coreManager = CoreManager.shared
     
     var photos: [UIImage]
     var tags: [String] = []
     var postDesription: String?
-    
+   
     required init(view: AddPostViewProtocol, photos: [UIImage]) {
         self.view = view
         self.photos = photos
     }
     
     func savePost() {
-        //File Manager
         let postId = UUID().uuidString
+        //File Manager
+        var photosData: [Data?] = []
+        photos.forEach {
+           let imageData = $0.jpegData(compressionQuality: 1.0)
+            photosData.append(imageData)
+        }
+        
+        let photosURLpath = storageManager.save(photos: photosData, postId: postId)
+       
         //Создаем объект внутри контекста - PostItem(context: ) Обязательно для сохр в CoreData
         let newPost: PostItem = {
             $0.id = postId
-            $0.photos = ["img1", "img2"]
+            $0.photos = photosURLpath //сохраняем в БД не бинарные данные, а url к фотографиям из FileManager!
             $0.comments = []
             $0.tags = tags
             $0.date = Date()

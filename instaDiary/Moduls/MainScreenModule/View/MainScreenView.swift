@@ -100,7 +100,12 @@ extension MainScreenView: UICollectionViewDataSource, UICollectionViewDelegateFl
         else { return UICollectionViewCell() }
         
         if let items = presenter.posts?[indexPath.section].items?.allObjects as? [PostItem] {
-            cell.configureCell(item: items[indexPath.item])
+            
+            let sortedDatePosts = items.sorted {
+                $0.date ?? Date() > $1.date ?? Date() //сортировка отображаемых постов по дате
+            }
+            
+            cell.configureCell(item: sortedDatePosts[indexPath.item])
         }
         
         return cell

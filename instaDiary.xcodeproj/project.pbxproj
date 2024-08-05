@@ -38,6 +38,8 @@
 		FC9BBF3B2B9B4227002C3EAA /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF3A2B9B4227002C3EAA /* TabBarView.swift */; };
 		FC9BBF3D2B9B4689002C3EAA /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF3C2B9B4689002C3EAA /* TabBarPresenter.swift */; };
 		FC9BBF3F2B9B4E96002C3EAA /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9BBF3E2B9B4E96002C3EAA /* MainScreenPresenter.swift */; };
+		FCC602072C5E7315007D3EFE /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC602062C5E7315007D3EFE /* StoreManager.swift */; };
+		FCC602092C60D138007D3EFE /* UIImage + Ext..swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC602082C60D138007D3EFE /* UIImage + Ext..swift */; };
 		FCDEF5C62BA9874000EE57B7 /* DetailsPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5C52BA9874000EE57B7 /* DetailsPhotoCell.swift */; };
 		FCDEF5C82BA98B9E00EE57B7 /* DetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5C72BA98B9E00EE57B7 /* DetailDescriptionCell.swift */; };
 		FCDEF5CA2BA9955500EE57B7 /* DetailsAddCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEF5C92BA9955500EE57B7 /* DetailsAddCommentCell.swift */; };
@@ -96,6 +98,8 @@
 		FC9BBF3A2B9B4227002C3EAA /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		FC9BBF3C2B9B4689002C3EAA /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		FC9BBF3E2B9B4E96002C3EAA /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
+		FCC602062C5E7315007D3EFE /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		FCC602082C60D138007D3EFE /* UIImage + Ext..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Ext..swift"; sourceTree = "<group>"; };
 		FCDEF5C52BA9874000EE57B7 /* DetailsPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPhotoCell.swift; sourceTree = "<group>"; };
 		FCDEF5C72BA98B9E00EE57B7 /* DetailDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDescriptionCell.swift; sourceTree = "<group>"; };
 		FCDEF5C92BA9955500EE57B7 /* DetailsAddCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAddCommentCell.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 		FC68228E2B94979D00562C78 /* instaDiary */ = {
 			isa = PBXGroup;
 			children = (
+				FCC602052C5E7291007D3EFE /* StoreManager */,
 				FC54F6322BEF9E8700918D70 /* StorageManager */,
 				FC3FCFC72B9DDE7F0020B3F3 /* Helpers */,
 				FC6822AD2B94A60300562C78 /* Extension */,
@@ -282,6 +287,7 @@
 				FCDEF5CB2BA9969800EE57B7 /* UITextField + ext.swift */,
 				FCDEF5DD2BAC3B2F00EE57B7 /* UIImageView + ext.swift */,
 				FCDEF5D62BAAF0E400EE57B7 /* NSNotification.Name.ext.swift */,
+				FCC602082C60D138007D3EFE /* UIImage + Ext..swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -355,6 +361,14 @@
 				FCDEF5D82BAB637700EE57B7 /* CameraViewPresenter.swift */,
 			);
 			path = CameraModule;
+			sourceTree = "<group>";
+		};
+		FCC602052C5E7291007D3EFE /* StoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				FCC602062C5E7315007D3EFE /* StoreManager.swift */,
+			);
+			path = StoreManager;
 			sourceTree = "<group>";
 		};
 		FCDEF5C42BA986F900EE57B7 /* Cells */ = {
@@ -611,6 +625,7 @@
 				FCFAE7A02BA6C69F005C8A9B /* DetailsView.swift in Sources */,
 				FC64D5312B99EB4A00FF0E36 /* StringProtocol + Ext.swift in Sources */,
 				FCDEF5E62BAC5D7400EE57B7 /* AddPostPresenter.swift in Sources */,
+				FCC602072C5E7315007D3EFE /* StoreManager.swift in Sources */,
 				FC54F63E2BEFA49C00918D70 /* PostData+CoreDataClass.swift in Sources */,
 				FCFAE7A42BA6C764005C8A9B /* DetailsPresenter.swift in Sources */,
 				FC64D52C2B99C09100FF0E36 /* KeychainManager.swift in Sources */,
@@ -620,6 +635,7 @@
 				FC54F6442BEFA58600918D70 /* CoreManager.swift in Sources */,
 				FC3FCFC42B9CD7DF0020B3F3 /* Date + Ext.swift in Sources */,
 				FC9BBF352B9B3EB5002C3EAA /* MainScreenView.swift in Sources */,
+				FCC602092C60D138007D3EFE /* UIImage + Ext..swift in Sources */,
 				FCDEF5ED2BACABAA00EE57B7 /* AddPostFieldCell.swift in Sources */,
 				FCDEF5D32BAAA92400EE57B7 /* PhotoView.swift in Sources */,
 				FC6822922B94979D00562C78 /* SceneDelegate.swift in Sources */,

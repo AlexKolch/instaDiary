@@ -11,6 +11,11 @@ protocol AddPostViewProtocol: AnyObject {
     var delegate: CameraViewDelegate? {get set}
 }
 
+protocol AddPostViewDelegate: AnyObject {
+    func addTag(tag: String?)
+    func addDescription(text: String?)
+}
+
 class AddPostView: UIViewController, AddPostViewProtocol {
     
     var presenter: AddPostPresenterProtocol!
@@ -192,16 +197,31 @@ extension AddPostView: UICollectionViewDataSource {
             
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddPostFieldCell.reuseId, for: indexPath) as! AddPostFieldCell
-            
-            cell.tagCompletion = { [weak self] tag in
-                guard let self else {return}
-                guard let tag else {return}
-                
-                self.presenter.tags.append(tag)
-                collectionView.reloadSections(.init(integer: 1))
-            }
-            
+           
+//            cell.tagCompletion = { [weak self] tag in
+//                guard let self else {return}
+//                guard let tag else {return}
+//                
+//                self.presenter.tags.append(tag)
+//                collectionView.reloadSections(.init(integer: 1))
+//            }
+            cell.delegate = self
             return cell
         }
     }
+}
+
+extension AddPostView: AddPostViewDelegate {
+    
+    func addTag(tag: String?) {
+        guard let tag else {return}
+        self.presenter.tags.append(tag)
+        collectionView.reloadSections(.init(integer: 1))
+    }
+    
+    func addDescription(text: String?) {
+        presenter.postDesription = text
+//        print("Ввели описание поста: \(text)")
+    }
+    
 }

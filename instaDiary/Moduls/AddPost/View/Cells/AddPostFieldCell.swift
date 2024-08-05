@@ -10,7 +10,8 @@ import UIKit
 class AddPostFieldCell: UICollectionViewCell {
     static let reuseId = "AddPostFieldCell"
     
-    var tagCompletion: ( (String?) -> Void )?
+//    var tagCompletion: ( (String?) -> Void )?
+    weak var delegate: AddPostViewDelegate?
     
     private lazy var tagField: UITextField = {
         $0.backgroundColor = .appBlack
@@ -25,7 +26,8 @@ class AddPostFieldCell: UICollectionViewCell {
     
     private lazy var tagFieldAction = UIAction { [weak self] _ in
         guard let self else { return }
-        self.tagCompletion?(tagField.text)
+//        self.tagCompletion?(tagField.text)
+        delegate?.addTag(tag: tagField.text)
         self.tagField.text = ""
     }
     
@@ -59,11 +61,16 @@ class AddPostFieldCell: UICollectionViewCell {
 }
 
 extension AddPostFieldCell: UITextViewDelegate {
+    
     func textViewDidChange(_ textView: UITextView) {
         if textView.text.count == 0 {
             placeholderLabel.isHidden = false
         } else {
             placeholderLabel.isHidden = true
         }
+    }
+    //Срабатывает в конце редактирования
+    func textViewDidEndEditing(_ textView: UITextView) {
+        delegate?.addDescription(text: textView.text)
     }
 }

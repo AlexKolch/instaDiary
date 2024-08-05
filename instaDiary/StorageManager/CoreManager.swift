@@ -38,7 +38,7 @@ class CoreManager {
     ///получение постов из CoreData
     func fetchPosts() {
         let request = PostData.fetchRequest() //request для получения постов
-        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)] //сортировка по новым поcтам
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)] //сортировка по новым поcтам (вверху сегодняшняя дата)
         
         do {
             let posts = try persistentContainer.viewContext.fetch(request) //получаем данные из CoreData
