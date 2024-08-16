@@ -12,4 +12,5 @@ extension NSNotification.Name {
     static let hideTabBar = NSNotification.Name("hideTabBar") //Чтобы не ошибиться с названием ключа нотификации
     static let goToMain = NSNotification.Name("goToMain")
     static let dismissPasscode = NSNotification.Name("dismissPasscode")
+    static let dismissCameraView = NSNotification.Name("dismissCameraView")
 }

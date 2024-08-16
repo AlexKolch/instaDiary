@@ -32,17 +32,25 @@ final class StoreManager: StoreManagerProtocol {
         return photosData
     }
     
-   
+    ///достает фотографию из FileManager
+    func getPhotoData(postId: String, photo: String) -> Data? {
+        let path = getPath().appending(path: postId).appending(path: photo)
+        let photoData = try? Data(contentsOf: path)
+        guard let photoData else {return nil}
+        return photoData
+    }
+    
+   ///получает Data фотографий, сохраняет в FileManager и возвращает ссылки на фото для CoreData
     func save(photos: [Data?], postId: String) -> [String] {
-        var photoNames = [String]()
-        
+        var photoURLs = [String]()
+        //сохраняем каждую data фотки в FileManager
         photos.forEach { data in
             guard let data else { return }
-            let photoName = savePhoto(postId: postId, photo: data)
-            photoNames.append(photoName)
+            let photoURL = savePhoto(postId: postId, photo: data)
+            photoURLs.append(photoURL)
         }
         
-        return photoNames
+        return photoURLs
     }
     
     ///путь к директории file manager
@@ -50,7 +58,7 @@ final class StoreManager: StoreManagerProtocol {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     
-    ///сохраняет фото и создает папку в директории если ее не было
+    ///сохраняет фото и возвращает ссылку на нее
     private func savePhoto(postId: String, photo: Data) -> String {
         let name = UUID().uuidString + ".jpeg"
         var path = getPath().appending(path: postId) //создание url/имя папки с постом
@@ -65,6 +73,6 @@ final class StoreManager: StoreManagerProtocol {
         }
         
 
-        return name //Возвращает имя под которым сохранил фотку в FileManager, чтобы потом записать это имя в CoreData
+        return name //Возвращает имя/url под которым сохранил фотку в FileManager, чтобы потом записать это имя/url в CoreData
     }
 }

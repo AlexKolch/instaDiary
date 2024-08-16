@@ -37,7 +37,7 @@ class Builder: BuilderProtocol {
         let mainView = MainScreenView()
         let presenter = MainScreenPresenter(view: mainView)
         mainView.presenter = presenter
-        return mainView
+        return CustomNavigationController(rootViewController: mainView)
     }
     
     static func createFavoriteScreenController() -> UIViewController {
@@ -66,6 +66,7 @@ class Builder: BuilderProtocol {
         detailsView.presenter = presenter
         return detailsView
     }
+    
     ///for child VC
     static func createPhotoViewController(image: UIImage?) -> UIViewController {
         let photoView = PhotoView()

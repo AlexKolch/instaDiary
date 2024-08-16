@@ -58,9 +58,9 @@ class MainPostCell: UICollectionViewCell {
         let tagCollection: TagCollectionViewProtocol = TagCollectionView(dataSource: self)
         self.tagCollectionView = tagCollection.getCollectionView()
         
-        postImage.image = UIImage.getCoverImage(from: item.id ?? "", photos: item.photos) //Здесь устанавливается фотография поста
+        postImage.image = UIImage.getMainImagePost(from: item.id ?? "", photos: item.photos) //Здесь устанавливается фотография поста
         
-        photoCountLabel = getCellLabel(text: "\(String(describing: item.photos?.count)) фото")
+        photoCountLabel = getCellLabel(text: "\(String(describing: item.photos!.count)) фото")
         commentCountLabel = getCellLabel(text: "\(item.comments?.count ?? 0) комментарий")
         postDesciptionLabel = getCellLabel(text: item.postDescription ?? "")
         

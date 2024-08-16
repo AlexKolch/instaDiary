@@ -12,7 +12,7 @@ protocol CameraViewPresenterProtocol: AnyObject {
     var photos: [UIImage] {get set}
     var cameraService: CameraServiceProtocol {get set}
     var closeViewAction: UIAction? {get set}
-    var switchCamera: UIAction? {get set}
+    var switchCameraAction: UIAction? {get set}
     func deleteImage(for index: Int)
 }
 
@@ -24,22 +24,34 @@ class CameraViewPresenter: CameraViewPresenterProtocol {
     var photos: [UIImage] = []
     
     lazy var closeViewAction: UIAction? = UIAction { [weak self] _ in
-        NotificationCenter.default.post(name: .goToMain, object: nil)
-        self?.cameraService.stopSession()
-        self?.photos.removeAll() //очищаюся недавние фотки в коллекции на экране CameraView
+        self?.closeView()
     }
     
-    lazy var switchCamera: UIAction? = UIAction { [weak self] _ in
+    lazy var switchCameraAction: UIAction? = UIAction { [weak self] _ in
         self?.cameraService.switchCamera()
     }
     
     required init(view: CameraViewProtocol, cameraService: CameraServiceProtocol) {
         self.view = view
         self.cameraService = cameraService
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(closeView), name: .dismissCameraView, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        print("deinit CameraViewPresenter")
     }
     
     func deleteImage(for index: Int) {
         photos.remove(at: index)
+    }
+    
+    @objc func closeView() {
+        print("goToMain")
+        NotificationCenter.default.post(name: .goToMain, object: nil)
+        cameraService.stopSession()
+        photos.removeAll() //очищаются недавние фотки в коллекции на экране CameraView
     }
     
 }

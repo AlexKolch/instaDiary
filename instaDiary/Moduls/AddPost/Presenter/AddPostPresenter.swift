@@ -34,12 +34,13 @@ class AddPostPresenter: AddPostPresenterProtocol {
         let postId = UUID().uuidString
         //File Manager
         var photosData: [Data?] = []
+        //конвертируем фотки в Data
         photos.forEach {
            let imageData = $0.jpegData(compressionQuality: 1.0)
             photosData.append(imageData)
         }
         
-        let photosURLpath = storageManager.save(photos: photosData, postId: postId)
+        let photosURLpath = storageManager.save(photos: photosData, postId: postId) //массив url адресов фоток из FileManager
        
         //Создаем объект внутри контекста - PostItem(context: ) Обязательно для сохр в CoreData
         let newPost: PostItem = {

@@ -16,14 +16,22 @@ class TabBarView: UITabBarController {
     var presenter: TabBarPresenterProtocol!
     let tabs: [UIImage] = [.home, .plus, .heart]
     
-    ///положим на эту вью таб бар кнопки чтобы легче было ими управлять при скрытии бара
+    lazy var selectItem = UIAction { [weak self] sender in
+        guard
+            let self = self,
+            let sender = sender.sender as? UIButton
+        else {return}
+        
+        self.selectedIndex = sender.tag
+    }
+    
+    ///положим на эту вью таб бар кнопки, чтобы легче было ими управлять при скрытии бара
     private lazy var tabBarView: UIView = {
         return $0
     }(UIView(frame: CGRect(x: 0, y: view.frame.height - 100, width: view.frame.width, height: 60)))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(hideTabBar), name: .hideTabBar, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(goToMainView), name: .goToMain, object: nil)
         
@@ -39,19 +47,11 @@ class TabBarView: UITabBarController {
         view.addSubview(tabBarView)
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        selectedIndex = 0
-//    }
-
-    lazy var selectItem = UIAction { [weak self] sender in
-        guard
-            let self = self,
-            let sender = sender.sender as? UIButton
-        else {return}
-        
-        self.selectedIndex = sender.tag
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        buildTabBar()
     }
+    
     ///функции нотификации
     @objc func goToMainView() {
         self.selectedIndex = 0
@@ -68,15 +68,31 @@ class TabBarView: UITabBarController {
             }
         }
     }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
         print("deinit TabBarView")
     }
 }
 
-extension TabBarView {
+extension TabBarView: TabBarViewProtocol {
     
-    private func createTabBarBtn(icon: UIImage, tag: Int, offsetX: Double, isBigBtn: Bool = false) -> UIButton {
+    func setControllers(controllers: [UIViewController]) {
+        setViewControllers(controllers, animated: true)
+    }
+}
+
+private extension TabBarView {
+    
+    func buildTabBar() {
+        let mainScreen = Builder.createMainScreenController()
+        let cameraScreen = Builder.createCameraScreenController()
+        let favoriteScreen = Builder.createFavoriteScreenController()
+        
+        self.setControllers(controllers: [mainScreen, cameraScreen, favoriteScreen])
+    }
+    
+    func createTabBarBtn(icon: UIImage, tag: Int, offsetX: Double, isBigBtn: Bool = false) -> UIButton {
         return {
             let btnSize = isBigBtn ? 60.0 : 25.0
             let yOffset = isBigBtn ? 0 : 15
@@ -90,10 +106,3 @@ extension TabBarView {
     }
 }
 
-extension TabBarView: TabBarViewProtocol {
-    
-    func setControllers(controllers: [UIViewController]) {
-        setViewControllers(controllers, animated: true)
-    }
-    
-}

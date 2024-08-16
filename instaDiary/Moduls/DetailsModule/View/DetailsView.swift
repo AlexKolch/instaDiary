@@ -14,7 +14,7 @@ protocol DetailsViewProtocol: AnyObject {
 class DetailsView: UIViewController {
     
     var presenter: DetailsPresenterProtocol!
-    var photoView: PhotoView! //объявили здесь, чтобы обнулять ссылку при уничтожении photoView контроллера (232 строчка)
+    var photoView: PhotoView! //объявили здесь, чтобы обнулять ссылку при уничтожении photoView контроллера (231 строчка)
     
     //Здесь создается шапка для topMenuView
     private let menuViewHeight = UIApplication.topSafeArea + 50
@@ -64,7 +64,7 @@ class DetailsView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.setHidesBackButton(true, animated: true) //тогда не будет работать жест смахивания страницы(можно добваить свой жест)
+        navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.navigationBar.isHidden = true
         
         NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : true]) //отправили нотификацию
@@ -185,7 +185,7 @@ extension DetailsView: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsPhotoCell.reuseId, for: indexPath) as! DetailsPhotoCell
-            cell.configure(image: item.photos?[indexPath.item] ?? "photo")
+            cell.configure(postId: item.id ?? "", image: item.photos?[indexPath.item] ?? "photo")
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionVCell.reuseId, for: indexPath) as! TagCollectionVCell
@@ -221,11 +221,12 @@ extension DetailsView: UICollectionViewDataSource {
 }
 
 extension DetailsView: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let itemPhoto = presenter.postItem.photos?[indexPath.item] //получили конкретную нажатую фотку
-            
-            photoView = Builder.createPhotoViewController(image: UIImage(named: itemPhoto ?? "photo")) as? PhotoView
+            let gettingPhoto: UIImage? = .getPhoto(for: presenter.postItem.id ?? "", photo: itemPhoto ?? "photo")
+            photoView = Builder.createPhotoViewController(image: gettingPhoto) as? PhotoView
             
             if photoView != nil {
                 addChild(photoView!)

@@ -111,6 +111,15 @@ extension MainScreenView: UICollectionViewDataSource, UICollectionViewDelegateFl
         return cell
     }
     
+    //Переход на детальный экран поста
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let items = presenter.posts?[indexPath.section].items?.allObjects as? [PostItem] {
+            let item = items[indexPath.item]
+            let detailVC = Builder.createDetailsController(item: item)
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MainPostHeader.reuseId, for: indexPath) as! MainPostHeader
         

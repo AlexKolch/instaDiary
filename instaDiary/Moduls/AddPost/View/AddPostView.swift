@@ -60,6 +60,7 @@ class AddPostView: UIViewController, AddPostViewProtocol {
     private lazy var saveBtnAction = UIAction { [weak self] _ in
         self?.presenter.savePost()
         print("post saved")
+        NotificationCenter.default.post(name: .dismissCameraView, object: nil)
     }
     
 //MARK: - viewDidLoad
@@ -83,6 +84,7 @@ class AddPostView: UIViewController, AddPostViewProtocol {
         header.frame.origin.y = UIApplication.topSafeArea
         view.addSubview(header)
     }
+    
     @objc func endEditing() {
         view.endEditing(true)
     }

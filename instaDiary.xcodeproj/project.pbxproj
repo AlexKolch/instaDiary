@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC3B0F122C62812B00CB8C33 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B0F112C62812B00CB8C33 /* CustomNavigationController.swift */; };
 		FC3FCFBE2B9CC4A90020B3F3 /* MainPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFBD2B9CC4A90020B3F3 /* MainPostCell.swift */; };
 		FC3FCFC02B9CC5090020B3F3 /* MainPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFBF2B9CC5090020B3F3 /* MainPostHeader.swift */; };
 		FC3FCFC22B9CC7770020B3F3 /* PostItem1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FCFC12B9CC7770020B3F3 /* PostItem1.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC3B0F112C62812B00CB8C33 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		FC3FCFBD2B9CC4A90020B3F3 /* MainPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostCell.swift; sourceTree = "<group>"; };
 		FC3FCFBF2B9CC5090020B3F3 /* MainPostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostHeader.swift; sourceTree = "<group>"; };
 		FC3FCFC12B9CC7770020B3F3 /* PostItem1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem1.swift; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 			isa = PBXGroup;
 			children = (
 				FCFAE7A52BA85558005C8A9B /* NavigationHeader.swift */,
+				FC3B0F112C62812B00CB8C33 /* CustomNavigationController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				FCDEF5F42BAD644B00EE57B7 /* SettingsPresenter.swift in Sources */,
 				FCDEF5D52BAAB3B000EE57B7 /* PhotoViewPresenter.swift in Sources */,
 				FC6822902B94979D00562C78 /* AppDelegate.swift in Sources */,
+				FC3B0F122C62812B00CB8C33 /* CustomNavigationController.swift in Sources */,
 				FCDEF5DC2BABFEEE00EE57B7 /* CameraService.swift in Sources */,
 				FCDEF5E92BAC785F00EE57B7 /* AddPostPhotoCell.swift in Sources */,
 				FC3FCFC02B9CC5090020B3F3 /* MainPostHeader.swift in Sources */,

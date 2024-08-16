@@ -34,7 +34,8 @@ class DetailsPhotoCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(image: String) {
-        imageCell.image = UIImage(named: image)
+
+    func configure(postId: String, image: String) {
+        imageCell.image = .getPhoto(for: postId, photo: image)
     }
 }

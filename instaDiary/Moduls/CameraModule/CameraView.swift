@@ -55,7 +55,7 @@ class CameraView: UIViewController, CameraViewProtocol {
     private lazy var switchBtn: UIButton = {
         $0.setBackgroundImage(.switchCamera, for: .normal)
         return $0
-    }(UIButton(frame: CGRect(x: shotBtn.frame.origin.x - 60, y: shotBtn.frame.origin.y + 17.5, width: 25, height: 25), primaryAction: presenter.switchCamera))
+    }(UIButton(frame: CGRect(x: shotBtn.frame.origin.x - 60, y: shotBtn.frame.origin.y + 17.5, width: 25, height: 25), primaryAction: presenter.switchCameraAction))
     
     private lazy var nextBtn: UIButton = {
         $0.setTitle("Далее", for: .normal)

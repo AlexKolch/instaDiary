@@ -9,28 +9,15 @@ import UIKit
 
 protocol TabBarPresenterProtocol: AnyObject {
     init(view: TabBarViewProtocol)
-    func buildTabBar()
 }
 
-class TabBarPresenter {
+class TabBarPresenter: TabBarPresenterProtocol {
     
     weak var view: TabBarViewProtocol?
     
     required init(view: TabBarViewProtocol) {
         self.view = view
-        buildTabBar()
     }
-    
+     
 }
 
-extension TabBarPresenter: TabBarPresenterProtocol {
-    
-    func buildTabBar() {
-        let mainScreen = Builder.createMainScreenController()
-        let cameraScreen = Builder.createCameraScreenController()
-        let favoriteScreen = Builder.createFavoriteScreenController()
-        
-        view?.setControllers(controllers: [mainScreen, cameraScreen, favoriteScreen])
-    }
-    
-}
