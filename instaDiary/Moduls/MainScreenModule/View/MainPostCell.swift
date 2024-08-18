@@ -10,6 +10,7 @@ import UIKit
 class MainPostCell: UICollectionViewCell {
     static let reuseId = "MainPostCell"
     private var tags: [String] = []
+    var favoriteCompletionBlock: (() -> Void)?
     
     private var tagCollectionView: UICollectionView!
     private var photoCountLabel = UILabel()
@@ -36,7 +37,9 @@ class MainPostCell: UICollectionViewCell {
         $0.frame = CGRect(x: bounds.width - 60, y: 35, width: 25, height: 25)
         $0.setBackgroundImage(.heart, for: .normal)
         return $0
-    }(UIButton(primaryAction: nil))
+    }(UIButton(primaryAction: UIAction { [weak self] _ in
+        self?.favoriteCompletionBlock?()
+    }))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,6 +62,7 @@ class MainPostCell: UICollectionViewCell {
         self.tagCollectionView = tagCollection.getCollectionView()
         
         postImage.image = UIImage.getMainImagePost(from: item.id ?? "", photos: item.photos) //Здесь устанавливается фотография поста
+        favoriteButton.setBackgroundImage(item.isFavorite ? .heartBlack : .heart, for: .normal)
         
         photoCountLabel = getCellLabel(text: "\(String(describing: item.photos!.count)) фото")
         commentCountLabel = getCellLabel(text: "\(item.comments?.count ?? 0) комментарий")

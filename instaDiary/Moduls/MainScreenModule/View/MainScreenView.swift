@@ -56,6 +56,7 @@ class MainScreenView: UIViewController {
        collection.register(MainPostHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MainPostHeader.reuseId)
        collection.alwaysBounceVertical = true
        collection.contentInset.top = 80
+       collection.contentInsetAdjustmentBehavior = .scrollableAxes
        
        layout.itemSize = CGSize(width: view.frame.width - 60, height: view.frame.width - 60)
        layout.minimumLineSpacing = 30
@@ -76,6 +77,7 @@ class MainScreenView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
         NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : false])
     }
     
@@ -102,10 +104,16 @@ extension MainScreenView: UICollectionViewDataSource, UICollectionViewDelegateFl
         if let items = presenter.posts?[indexPath.section].items?.allObjects as? [PostItem] {
             
             let sortedDatePosts = items.sorted {
-                $0.date ?? Date() > $1.date ?? Date() //сортировка отображаемых постов по дате
+                $0.date ?? Date() > $1.date ?? Date() //сортировка отображаемых постов по дате, пока с багами
             }
             
-            cell.configureCell(item: sortedDatePosts[indexPath.item])
+            let item = sortedDatePosts[indexPath.item]
+            
+            cell.configureCell(item: item)
+            
+            cell.favoriteCompletionBlock = {
+                item.toggle(isFavorite: item.isFavorite)
+            }
         }
         
         return cell

@@ -48,6 +48,24 @@ class CoreManager {
         }
     }
     
+    ///получение favorite постов из CoreData
+    func getFavoritePosts() -> [PostItem] {
+        let bool = NSNumber(booleanLiteral: true) //bool не принимает предикат, поэтому переводим в number
+        var allFavPost = [PostItem]()
+        
+        let favReq = PostItem.fetchRequest()
+        favReq.predicate = NSPredicate(format: "isFavorite = %@", bool as CVarArg) //выборка достать только isFavorite = true посты
+        
+        do {
+            let favPosts = try persistentContainer.viewContext.fetch(favReq)
+            allFavPost = favPosts
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return allFavPost
+    }
+    
     ///Сохранение поста в  CoreData
     func save(post: PostItem) {
         let calendar = Calendar.current

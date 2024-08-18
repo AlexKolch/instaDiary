@@ -59,8 +59,8 @@ class AddPostView: UIViewController, AddPostViewProtocol {
     
     private lazy var saveBtnAction = UIAction { [weak self] _ in
         self?.presenter.savePost()
-        print("post saved")
         NotificationCenter.default.post(name: .dismissCameraView, object: nil)
+        self?.navigationController?.popViewController(animated: false)
     }
     
 //MARK: - viewDidLoad

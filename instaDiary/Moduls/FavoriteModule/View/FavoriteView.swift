@@ -75,6 +75,10 @@ extension FavoriteView: UICollectionViewDataSource {
         
         if let postItem = presenter.posts?[indexPath.item] {
             cell.configureCell(item: postItem)
+            
+            cell.removeCompletionBlock = {
+                postItem.toggle(isFavorite: postItem.isFavorite) //в этом блоке значение isFavorite меняется на противоположное
+            }
         }
         
         return cell

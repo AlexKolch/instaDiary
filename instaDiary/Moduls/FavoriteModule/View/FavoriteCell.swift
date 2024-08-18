@@ -10,6 +10,8 @@ import UIKit
 class FavoriteCell: UICollectionViewCell {
     static let reuseId = "FavoriteCell"
     
+    var removeCompletionBlock: (() -> Void)?
+    
    lazy var postImage: UIImageView = {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
@@ -20,7 +22,9 @@ class FavoriteCell: UICollectionViewCell {
         $0.frame = CGRect(x: bounds.width - 43, y: 21, width: 25, height: 25)
         $0.setBackgroundImage(.heartBlack, for: .normal)
        return $0
-    }(UIButton(primaryAction: nil))
+    }(UIButton(primaryAction: UIAction(handler: { [weak self] _ in
+        self?.removeCompletionBlock?()
+    })))
     
     lazy var dateView: UIView = {
         $0.frame = CGRect(x: 10, y: bounds.height - 47,
@@ -54,7 +58,7 @@ class FavoriteCell: UICollectionViewCell {
     }
     
     func configureCell(item: PostItem) {
-        postImage.image = UIImage(named: item.photos?.first ?? "photo")
+        postImage.image = .getPhoto(for: item.id ?? "", photo: item.photos?.first ?? "")
         dateLabel.text = item.date?.formattDate() //получили дату форматированную в текст
     }
 }

@@ -4,7 +4,7 @@
 //
 //  Created by Алексей Колыченков on 11.05.2024.
 //
-//
+// Для группировки постов по дате создания. В одной date(группе) может быть несколько PostItem-ов
 
 import Foundation
 import CoreData

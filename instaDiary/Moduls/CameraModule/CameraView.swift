@@ -101,6 +101,9 @@ class CameraView: UIViewController, CameraViewProtocol {
         NotificationCenter.default.post(name: .hideTabBar, object: nil, userInfo: ["isHide" : true])
         navigationController?.navigationBar.isHidden = true
     }
+    deinit {
+        print("deinit CameraView")
+    }
 //MARK: - private func
     ///Проверяет доступ к камере
     private func checkPermission() {
