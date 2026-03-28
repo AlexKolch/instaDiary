@@ -12,7 +12,7 @@ Completed tasks:
 * UIKit
 * MVP
 * Modul architecture
-* Builder pattern
+* Factory pattern
 * Dependency injection
 * AVFoundation framework
 * Core Data framework
